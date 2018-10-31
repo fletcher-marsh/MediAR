@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008B7218A682E0027E682 /* AppDelegate.swift */; };
+		D32008BA218A682E0027E682 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008B9218A682E0027E682 /* art.scnassets */; };
+		D32008BC218A682E0027E682 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008BB218A682E0027E682 /* ViewController.swift */; };
+		D32008BF218A682E0027E682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32008BD218A682E0027E682 /* Main.storyboard */; };
+		D32008C1218A682E0027E682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008C0218A682E0027E682 /* Assets.xcassets */; };
+		D32008C4218A682E0027E682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32008C2218A682E0027E682 /* LaunchScreen.storyboard */; };
+		D32008CF218A682E0027E682 /* MediARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008CE218A682E0027E682 /* MediARTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D32008CB218A682E0027E682 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D32008AC218A682E0027E682 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D32008B3218A682E0027E682;
+			remoteInfo = MediAR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D32008B4218A682E0027E682 /* MediAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D32008B7218A682E0027E682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D32008B9218A682E0027E682 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		D32008BB218A682E0027E682 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D32008BE218A682E0027E682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D32008C0218A682E0027E682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D32008C3218A682E0027E682 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D32008C5218A682E0027E682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D32008CA218A682E0027E682 /* MediARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D32008CE218A682E0027E682 /* MediARTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediARTests.swift; sourceTree = "<group>"; };
+		D32008D0218A682E0027E682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D32008B1218A682E0027E682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D32008C7218A682E0027E682 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D32008AB218A682E0027E682 = {
+			isa = PBXGroup;
+			children = (
+				D32008B6218A682E0027E682 /* MediAR */,
+				D32008CD218A682E0027E682 /* MediARTests */,
+				D32008B5218A682E0027E682 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D32008B5218A682E0027E682 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D32008B4218A682E0027E682 /* MediAR.app */,
+				D32008CA218A682E0027E682 /* MediARTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D32008B6218A682E0027E682 /* MediAR */ = {
+			isa = PBXGroup;
+			children = (
+				D32008B7218A682E0027E682 /* AppDelegate.swift */,
+				D32008B9218A682E0027E682 /* art.scnassets */,
+				D32008BB218A682E0027E682 /* ViewController.swift */,
+				D32008BD218A682E0027E682 /* Main.storyboard */,
+				D32008C0218A682E0027E682 /* Assets.xcassets */,
+				D32008C2218A682E0027E682 /* LaunchScreen.storyboard */,
+				D32008C5218A682E0027E682 /* Info.plist */,
+			);
+			path = MediAR;
+			sourceTree = "<group>";
+		};
+		D32008CD218A682E0027E682 /* MediARTests */ = {
+			isa = PBXGroup;
+			children = (
+				D32008CE218A682E0027E682 /* MediARTests.swift */,
+				D32008D0218A682E0027E682 /* Info.plist */,
+			);
+			path = MediARTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D32008B3218A682E0027E682 /* MediAR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D32008D3218A682E0027E682 /* Build configuration list for PBXNativeTarget "MediAR" */;
+			buildPhases = (
+				D32008B0218A682E0027E682 /* Sources */,
+				D32008B1218A682E0027E682 /* Frameworks */,
+				D32008B2218A682E0027E682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MediAR;
+			productName = MediAR;
+			productReference = D32008B4218A682E0027E682 /* MediAR.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D32008C9218A682E0027E682 /* MediARTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D32008D6218A682E0027E682 /* Build configuration list for PBXNativeTarget "MediARTests" */;
+			buildPhases = (
+				D32008C6218A682E0027E682 /* Sources */,
+				D32008C7218A682E0027E682 /* Frameworks */,
+				D32008C8218A682E0027E682 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D32008CC218A682E0027E682 /* PBXTargetDependency */,
+			);
+			name = MediARTests;
+			productName = MediARTests;
+			productReference = D32008CA218A682E0027E682 /* MediARTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D32008AC218A682E0027E682 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = MediAR;
+				TargetAttributes = {
+					D32008B3218A682E0027E682 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					D32008C9218A682E0027E682 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D32008B3218A682E0027E682;
+					};
+				};
+			};
+			buildConfigurationList = D32008AF218A682E0027E682 /* Build configuration list for PBXProject "MediAR" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D32008AB218A682E0027E682;
+			productRefGroup = D32008B5218A682E0027E682 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D32008B3218A682E0027E682 /* MediAR */,
+				D32008C9218A682E0027E682 /* MediARTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D32008B2218A682E0027E682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D32008BA218A682E0027E682 /* art.scnassets in Resources */,
+				D32008C4218A682E0027E682 /* LaunchScreen.storyboard in Resources */,
+				D32008C1218A682E0027E682 /* Assets.xcassets in Resources */,
+				D32008BF218A682E0027E682 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D32008C8218A682E0027E682 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D32008B0218A682E0027E682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D32008BC218A682E0027E682 /* ViewController.swift in Sources */,
+				D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D32008C6218A682E0027E682 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D32008CF218A682E0027E682 /* MediARTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D32008CC218A682E0027E682 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D32008B3218A682E0027E682 /* MediAR */;
+			targetProxy = D32008CB218A682E0027E682 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D32008BD218A682E0027E682 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D32008BE218A682E0027E682 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D32008C2218A682E0027E682 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D32008C3218A682E0027E682 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D32008D1218A682E0027E682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D32008D2218A682E0027E682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D32008D4218A682E0027E682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediAR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.MediAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D32008D5218A682E0027E682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediAR/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.MediAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D32008D7218A682E0027E682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediARTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.MediARTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MediAR.app/MediAR";
+			};
+			name = Debug;
+		};
+		D32008D8218A682E0027E682 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MediARTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.MediARTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MediAR.app/MediAR";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D32008AF218A682E0027E682 /* Build configuration list for PBXProject "MediAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D32008D1218A682E0027E682 /* Debug */,
+				D32008D2218A682E0027E682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D32008D3218A682E0027E682 /* Build configuration list for PBXNativeTarget "MediAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D32008D4218A682E0027E682 /* Debug */,
+				D32008D5218A682E0027E682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D32008D6218A682E0027E682 /* Build configuration list for PBXNativeTarget "MediARTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D32008D7218A682E0027E682 /* Debug */,
+				D32008D8218A682E0027E682 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D32008AC218A682E0027E682 /* Project object */;
+}

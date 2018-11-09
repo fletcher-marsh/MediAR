@@ -41,10 +41,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Create a new scene (this is the default ship scene)
+        // Create a new scene (default ship scene)
         // let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        
-        // Set the scene to the view
         // sceneView.scene = scene
     }
   
@@ -62,7 +60,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+        guard let referenceImages =
+            // Load reference images to be scanned for into config
+            ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
           fatalError("Missing expected asset catalog resources.")
         }
       
@@ -86,34 +86,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     // MARK: - ARSCNViewDelegate
-    
 
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
         if let imageAnchor = anchor as? ARImageAnchor {
-          let referenceImage = imageAnchor.referenceImage
-            
-          // Create a plane to visualize the initial position of the detected image.
-          let plane = SCNPlane(width: referenceImage.physicalSize.width,
+            let referenceImage = imageAnchor.referenceImage
+
+            // Create a plane to visualize the initial position of the detected image.
+            let plane = SCNPlane(width: referenceImage.physicalSize.width,
                                height: referenceImage.physicalSize.height)
-          let planeNode = SCNNode(geometry: plane)
-          planeNode.opacity = 0.25
-          
-          /*
-           `SCNPlane` is vertically oriented in its local coordinate space, but
-           `ARImageAnchor` assumes the image is horizontal in its local space, so
-           rotate the plane to match.
-           */
-          planeNode.eulerAngles.x = -.pi / 2
-          
-          /*
-           replace the following line with code with stuff to show above poster
-           */
-//          planeNode.runAction(self.imageHighlightAction)
-          
-          // Add the plane visualization to the scene.
-          node.addChildNode(planeNode)
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.opacity = 0.25
+
+            /*
+            `SCNPlane` is vertically oriented in its local coordinate space, but
+            `ARImageAnchor` assumes the image is horizontal in its local space, so
+            rotate the plane to match.
+            */
+            planeNode.eulerAngles.x = -.pi / 2
+
+            // replace the following line with code with stuff to show above poster
+            // planeNode.runAction(self.imageHighlightAction)
+
+            // Add the plane visualization to the scene.
+            node.addChildNode(planeNode)
         }
         return node
     }
@@ -149,10 +146,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
             let nodeName = hitNode.name
             else {
-                //No Node Has Been Tapped
+                // No Node Has Been Tapped
                 return
             }
-        //Handle Event Here e.g. PerformSegue
+        // Handle Event Here e.g. PerformSegue
         print(nodeName)
         
     }

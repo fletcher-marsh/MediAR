@@ -10,9 +10,30 @@ import UIKit
 import SceneKit
 import ARKit
 
+import AVKit
+
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    
+    @IBAction func playPreview(_sender: AnyObject) {
+        guard let url = URL(string: "https://www.youtube.com/watch?v=YKL5tviGvIc") else {
+            return
+        }
+        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
+        let player = AVPlayer(url: url)
+        
+        // Create a new AVPlayerViewController and pass it a reference to the player.
+        let controller = AVPlayerViewController()
+        controller.player = player
+        
+        // Modally present the player and call the player's play() method when complete.
+        present(controller, animated: true) {
+            player.play()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -5,7 +5,13 @@
   },
   "resources" : [
     {
+      "filename" : "grinch.arreferenceimage"
+    },
+    {
       "filename" : "madmax.arreferenceimage"
+    },
+    {
+      "filename" : "venom.arreferenceimage"
     }
   ]
 }

@@ -91,26 +91,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let node = SCNNode()
         if let imageAnchor = anchor as? ARImageAnchor {
-            let referenceImage = imageAnchor.referenceImage
-
-            // Create a plane to visualize the initial position of the detected image.
-            let plane = SCNPlane(width: referenceImage.physicalSize.width,
-                               height: referenceImage.physicalSize.height)
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.opacity = 0.25
-
-            /*
-            `SCNPlane` is vertically oriented in its local coordinate space, but
-            `ARImageAnchor` assumes the image is horizontal in its local space, so
-            rotate the plane to match.
-            */
-            planeNode.eulerAngles.x = -.pi / 2
-
-            // replace the following line with code with stuff to show above poster
-            // planeNode.runAction(self.imageHighlightAction)
-
-            // Add the plane visualization to the scene.
-            node.addChildNode(planeNode)
+            let newPlane = Plane(imageAnchor: imageAnchor)
+            newPlane.addPlaneToScene(node)
         }
         return node
     }

@@ -41,7 +41,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" image="right-arrow-circular-button" id="sEv-1Z-coJ">
                                 <connections>
-                                    <action selector="playPreviewWith_sender:" destination="IcE-D7-Q5w" id="H7M-2a-lyJ"/>
+                                    <segue destination="fAf-7t-2qd" kind="show" id="sp6-31-YQO"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -119,6 +119,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8h-Ou-K2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1093.5999999999999" y="957.57121439280365"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="2V9-O4-vIz">
+            <objects>
+                <viewController id="fAf-7t-2qd" customClass="PreviewViewController" customModule="MediAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oUN-75-3Zg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pm-yU-wjm" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Sda-30-Qt9"/>
+                    </view>
+                    <connections>
+                        <outlet property="playerView" destination="1Pm-yU-wjm" id="76v-YX-Ief"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMC-fg-jdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544.8000000000002" y="580.65967016491754"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GOM-Vt-cm2">

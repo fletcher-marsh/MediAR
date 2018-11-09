@@ -1,0 +1,5 @@
+target 'MediAR' do
+  use_frameworks!
+  platform :ios, '8.0'
+  pod "youtube-ios-player-helper", "~> 0.1.4"
+end

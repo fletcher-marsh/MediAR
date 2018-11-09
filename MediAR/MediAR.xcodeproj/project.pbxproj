@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E86E49257B7A9336FB9F5DA /* Pods_MediAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D999FBE11000F74BF87563 /* Pods_MediAR.framework */; };
+		69547EE72195689100485F75 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69547EE62195689100485F75 /* PreviewViewController.swift */; };
 		D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008B7218A682E0027E682 /* AppDelegate.swift */; };
 		D32008BA218A682E0027E682 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008B9218A682E0027E682 /* art.scnassets */; };
 		D32008BC218A682E0027E682 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008BB218A682E0027E682 /* ViewController.swift */; };
@@ -27,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55D999FBE11000F74BF87563 /* Pods_MediAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.release.xcconfig"; sourceTree = "<group>"; };
+		69547EE62195689100485F75 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
 		D32008B4218A682E0027E682 /* MediAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32008B7218A682E0027E682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D32008B9218A682E0027E682 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E86E49257B7A9336FB9F5DA /* Pods_MediAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B34D3F78EB2B817C90405C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55D999FBE11000F74BF87563 /* Pods_MediAR.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A1AE1807831638C4FA5B8E6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */,
+				5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D32008AB218A682E0027E682 = {
 			isa = PBXGroup;
 			children = (
 				D32008B6218A682E0027E682 /* MediAR */,
 				D32008CD218A682E0027E682 /* MediARTests */,
 				D32008B5218A682E0027E682 /* Products */,
+				A1AE1807831638C4FA5B8E6F /* Pods */,
+				0B34D3F78EB2B817C90405C8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +109,7 @@
 				D32008B9218A682E0027E682 /* art.scnassets */,
 				D32008BB218A682E0027E682 /* ViewController.swift */,
 				D32008BD218A682E0027E682 /* Main.storyboard */,
+				69547EE62195689100485F75 /* PreviewViewController.swift */,
 				D32008C0218A682E0027E682 /* Assets.xcassets */,
 				D32008C2218A682E0027E682 /* LaunchScreen.storyboard */,
 				D32008C5218A682E0027E682 /* Info.plist */,
@@ -106,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D32008D3218A682E0027E682 /* Build configuration list for PBXNativeTarget "MediAR" */;
 			buildPhases = (
+				E81293728E6E4C72BB7B684D /* [CP] Check Pods Manifest.lock */,
 				D32008B0218A682E0027E682 /* Sources */,
 				D32008B1218A682E0027E682 /* Frameworks */,
 				D32008B2218A682E0027E682 /* Resources */,
+				B9BF9417326957996FAD33E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -198,6 +227,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B9BF9417326957996FAD33E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MediAR/Pods-MediAR-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MediAR/Pods-MediAR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E81293728E6E4C72BB7B684D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediAR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D32008B0218A682E0027E682 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -205,6 +277,7 @@
 			files = (
 				D32008BC218A682E0027E682 /* ViewController.swift in Sources */,
 				D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */,
+				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +428,7 @@
 		};
 		D32008D4218A682E0027E682 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -371,6 +445,7 @@
 		};
 		D32008D5218A682E0027E682 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

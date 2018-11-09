@@ -19,7 +19,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
     @IBAction func playPreview(_sender: AnyObject) {
-        guard let url = URL(string: "https://www.youtube.com/watch?v=YKL5tviGvIc") else {
+        guard let url = URL(string: "http://www.youtube.com/watch?v=YKL5tviGvIc") else {
             return
         }
         // Create an AVPlayer, passing it the HTTP Live Streaming URL.

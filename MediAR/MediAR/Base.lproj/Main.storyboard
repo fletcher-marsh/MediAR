@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--scanVC-->
         <scene sceneID="oY1-NK-98D">
             <objects>
-                <viewController id="IcE-D7-Q5w" customClass="ViewController" customModule="MediAR" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scanVC" title="scanVC" id="IcE-D7-Q5w" customClass="ViewController" customModule="MediAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QSU-XB-krL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,11 +28,18 @@
                         <viewLayoutGuide key="safeArea" id="J7K-7J-pK6"/>
                     </view>
                     <navigationItem key="navigationItem" id="9Og-ip-aPt">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-menu-filled-51" id="bUT-jS-NDl">
-                            <connections>
-                                <segue destination="jc3-HO-iH1" kind="show" id="VPC-sn-Fzn"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" image="icons8-menu-filled-51" id="bUT-jS-NDl">
+                                <connections>
+                                    <segue destination="jc3-HO-iH1" kind="show" id="VPC-sn-Fzn"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="icons8-google-maps-48" id="G5m-D2-Jfp">
+                                <connections>
+                                    <action selector="openMap:" destination="IcE-D7-Q5w" id="Xjr-qp-NQ1"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icons8-info-50" id="ZIG-sS-wNU">
                                 <connections>
@@ -53,6 +60,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Foh-gK-y6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1093.5999999999999" y="106.59670164917542"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="H3E-sj-wbc">
+            <objects>
+                <viewController storyboardIdentifier="DetailsScene" id="nHS-O1-nNb" customClass="DetailsViewController" customModule="MediAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bqU-ex-0lY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-e8-tEr">
+                                <rect key="frame" x="166" y="94" width="34" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metacritic Rating:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmK-qQ-jne">
+                                <rect key="frame" x="53" y="158" width="135" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWb-D8-O6o">
+                                <rect key="frame" x="208" y="158" width="25" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL0-42-y1d">
+                                <rect key="frame" x="139" y="246" width="88" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="an7-2p-iQ8"/>
+                    </view>
+                    <connections>
+                        <outlet property="moviedesc" destination="tL0-42-y1d" id="kud-WU-ODU"/>
+                        <outlet property="movieratings" destination="vWb-D8-O6o" id="i7Q-Qb-hbE"/>
+                        <outlet property="movietitle" destination="ERo-e8-tEr" id="erI-Vg-pSR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAX-aY-a8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="-1014"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SLN-pK-qHs">
@@ -165,6 +222,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-google-maps-48" width="48" height="48"/>
         <image name="icons8-info-50" width="50" height="50"/>
         <image name="icons8-menu-filled-51" width="50" height="50"/>
         <image name="right-arrow-circular-button" width="32" height="32"/>

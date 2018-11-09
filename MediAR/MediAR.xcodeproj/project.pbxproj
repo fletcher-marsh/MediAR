@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E86E49257B7A9336FB9F5DA /* Pods_MediAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D999FBE11000F74BF87563 /* Pods_MediAR.framework */; };
 		69547EE72195689100485F75 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69547EE62195689100485F75 /* PreviewViewController.swift */; };
+		69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C6D70421962D6C0000F42C /* DetailsViewController.swift */; };
 		D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008B7218A682E0027E682 /* AppDelegate.swift */; };
 		D32008BA218A682E0027E682 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008B9218A682E0027E682 /* art.scnassets */; };
 		D32008BC218A682E0027E682 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008BB218A682E0027E682 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 		55D999FBE11000F74BF87563 /* Pods_MediAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.release.xcconfig"; sourceTree = "<group>"; };
 		69547EE62195689100485F75 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		69C6D70421962D6C0000F42C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
 		D32008B4218A682E0027E682 /* MediAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32008B7218A682E0027E682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				D32008B9218A682E0027E682 /* art.scnassets */,
 				D32008BB218A682E0027E682 /* ViewController.swift */,
 				D32008BD218A682E0027E682 /* Main.storyboard */,
+				69C6D70421962D6C0000F42C /* DetailsViewController.swift */,
 				69547EE62195689100485F75 /* PreviewViewController.swift */,
 				D32008C0218A682E0027E682 /* Assets.xcassets */,
 				D32008C2218A682E0027E682 /* LaunchScreen.storyboard */,
@@ -233,15 +236,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MediAR/Pods-MediAR-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
@@ -278,6 +277,7 @@
 				D32008BC218A682E0027E682 /* ViewController.swift in Sources */,
 				D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */,
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
+				69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

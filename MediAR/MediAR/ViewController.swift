@@ -11,30 +11,25 @@ import SceneKit
 import ARKit
 
 import AVKit
+import MapKit
 
+
+
+// MARK: - Protocols
+
+protocol OpeningRouteDelegate {
+    func openMap(destination: CLLocation)
+}
+
+protocol OpeningDetailsDelegate {
+    func openDetails(title: String, ratings: String, description: String)
+}
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    
-    
-    @IBAction func playPreview(_sender: AnyObject) {
-        guard let url = URL(string: "http://www.youtube.com/watch?v=YKL5tviGvIc") else {
-            return
-        }
-        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
-        let player = AVPlayer(url: url)
-        
-        // Create a new AVPlayerViewController and pass it a reference to the player.
-        let controller = AVPlayerViewController()
-        controller.player = player
-        
-        // Modally present the player and call the player's play() method when complete.
-        present(controller, animated: true) {
-            player.play()
-        }
-    }
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -153,4 +148,32 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         print(nodeName)
         
     }
+    
+    // MARK: - External Calls
+    
+    @IBAction func openMap(_ sender: Any) {
+        //Working in Swift new versions.
+        guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&origin=Google+Pyrmont+NSW&destination=QVB&destination_place_id=ChIJISz8NjyuEmsRFTQ9Iw7Ear8&travelmode=walking") else { //Sample URL
+            return
+        }
+        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
+        
+        let webView:UIWebView = UIWebView()
+        
+        let mapURLRequest:URLRequest = URLRequest(url: url)
+        
+        
+        // Create a new AVPlayerViewController and pass it a reference to the player.
+        let controller = UIViewController()
+        controller.view = webView
+        
+        webView.loadRequest(mapURLRequest)
+        
+        // Modally present the player and call the player's play() method when complete.
+        present(controller, animated: true) {
+            
+        }
+        
+    }
+    
 }

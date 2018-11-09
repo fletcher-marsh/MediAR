@@ -84,8 +84,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        // Root node for scene
         let node = SCNNode()
+        
         if let imageAnchor = anchor as? ARImageAnchor {
+            // We found a matching anchor, draw plane over it for UI
             let newPlane = Plane(imageAnchor: imageAnchor)
             newPlane.addPlaneToScene(node)
         }

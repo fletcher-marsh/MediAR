@@ -17,6 +17,7 @@
 		D32008C1218A682E0027E682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008C0218A682E0027E682 /* Assets.xcassets */; };
 		D32008C4218A682E0027E682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32008C2218A682E0027E682 /* LaunchScreen.storyboard */; };
 		D32008CF218A682E0027E682 /* MediARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008CE218A682E0027E682 /* MediARTests.swift */; };
+		D37DEB6C21962819004C82C1 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DEB6B21962819004C82C1 /* Plane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		D32008CA218A682E0027E682 /* MediARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32008CE218A682E0027E682 /* MediARTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediARTests.swift; sourceTree = "<group>"; };
 		D32008D0218A682E0027E682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D37DEB6B21962819004C82C1 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		D32008B6218A682E0027E682 /* MediAR */ = {
 			isa = PBXGroup;
 			children = (
+				D37DEB6A219627FE004C82C1 /* Node */,
 				D32008B7218A682E0027E682 /* AppDelegate.swift */,
 				D32008B9218A682E0027E682 /* art.scnassets */,
 				D32008BB218A682E0027E682 /* ViewController.swift */,
@@ -127,6 +130,14 @@
 				D32008D0218A682E0027E682 /* Info.plist */,
 			);
 			path = MediARTests;
+			sourceTree = "<group>";
+		};
+		D37DEB6A219627FE004C82C1 /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				D37DEB6B21962819004C82C1 /* Plane.swift */,
+			);
+			path = Node;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,6 +287,7 @@
 			files = (
 				D32008BC218A682E0027E682 /* ViewController.swift in Sources */,
 				D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */,
+				D37DEB6C21962819004C82C1 /* Plane.swift in Sources */,
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
 				69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */,
 			);

@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,39 +19,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSn-kK-odK">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBZ-zx-Mkm">
+                                <rect key="frame" x="16" y="20" width="31" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.97296311430000004" green="1" blue="0.94164910270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="icons8-menu-filled-51"/>
+                                <connections>
+                                    <segue destination="jc3-HO-iH1" kind="show" id="xB9-uf-Rif"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkO-Vx-1xl">
+                                <rect key="frame" x="328" y="24" width="31" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons8-info-50"/>
+                                <connections>
+                                    <segue destination="N51-tj-QgJ" kind="show" id="r0g-S4-Rdg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5D-bg-GGN">
+                                <rect key="frame" x="124" y="476" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons8-google-maps-48"/>
+                                <connections>
+                                    <action selector="openMap:" destination="IcE-D7-Q5w" eventType="touchUpInside" id="R4K-Li-413"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rto-Ih-uWy">
+                                <rect key="frame" x="215" y="484" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="right-arrow-circular-button"/>
+                                <connections>
+                                    <segue destination="fAf-7t-2qd" kind="show" id="lhE-Yc-uUI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="J7K-7J-pK6"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9Og-ip-aPt">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="icons8-menu-filled-51" id="bUT-jS-NDl">
-                                <connections>
-                                    <segue destination="jc3-HO-iH1" kind="show" id="VPC-sn-Fzn"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="icons8-google-maps-48" id="G5m-D2-Jfp">
-                                <connections>
-                                    <action selector="openMap:" destination="IcE-D7-Q5w" id="Xjr-qp-NQ1"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" image="icons8-info-50" id="ZIG-sS-wNU">
-                                <connections>
-                                    <segue destination="N51-tj-QgJ" kind="show" id="Nk3-uC-Vbb"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="right-arrow-circular-button" id="sEv-1Z-coJ">
-                                <connections>
-                                    <segue destination="fAf-7t-2qd" kind="show" id="sp6-31-YQO"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="9Og-ip-aPt"/>
                     <connections>
                         <outlet property="sceneView" destination="mSn-kK-odK" id="7Db-1O-owg"/>
                     </connections>
@@ -205,10 +212,10 @@
         <!--Navigation Controller-->
         <scene sceneID="GOM-Vt-cm2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qIA-fL-Ozl" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4o3-hE-bHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qIA-fL-Ozl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ANt-VS-ndv">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -216,9 +223,22 @@
                         <segue destination="IcE-D7-Q5w" kind="relationship" relationship="rootViewController" id="4oq-pT-XRz"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4o3-hE-bHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-50.399999999999999" y="800.14992503748135"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1HS-OS-5LB">
+            <objects>
+                <viewController id="4Eh-yK-7aX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q17-vf-A0G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyR-Za-QbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="36" y="-251"/>
         </scene>
     </scenes>
     <resources>

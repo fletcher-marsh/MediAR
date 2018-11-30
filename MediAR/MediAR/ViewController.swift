@@ -219,6 +219,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             arImage.name = name
             print("Loading event image...")
             configuration.detectionImages?.insert(arImage)
+            sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         }
         
         for event in events {

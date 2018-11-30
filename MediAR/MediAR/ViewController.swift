@@ -89,8 +89,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         if let imageAnchor = anchor as? ARImageAnchor {
             // We found a matching anchor, draw plane over it for UI
-            let newPlane = Plane(imageAnchor: imageAnchor)
-            newPlane.addPlaneToScene(node)
+            let img = imageAnchor.referenceImage
+            let newPlane = Plane(referenceImage: img)
+            newPlane.addToScene(node)
+            let newText = Text(input: img.name!)
+            newText.addToScene(newPlane.displayNode)
         }
         return node
     }

@@ -38,33 +38,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
+        print("Loaded view." )
+        
         // Create a new scene (default ship scene)
         // let scene = SCNScene(named: "art.scnassets/ship.scn")!
         // sceneView.scene = scene
         
-        
-    }
-  
-    // Fade plane out of view
-    var imageHighlightAction: SCNAction {
-      return .sequence([
-        .wait(duration: 0.25),
-        .fadeOpacity(to: 0.85, duration: 1.50),
-        .fadeOpacity(to: 0.15, duration: 1.50),
-        .fadeOpacity(to: 0.85, duration: 1.50),
-        .fadeOut(duration: 0.75),
-        .removeFromParentNode()
-      ])
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         guard let referenceImages =
             // Load reference images to be scanned for into config
             ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-          fatalError("Missing expected asset catalog resources.")
+                fatalError("Missing expected asset catalog resources.")
         }
-      
+        
         
         configuration.detectionImages = referenceImages
         
@@ -93,6 +78,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         } catch {
         }
         loadEventImages(events: events)
+        
+        
+    }
+  
+    // Fade plane out of view
+    var imageHighlightAction: SCNAction {
+      return .sequence([
+        .wait(duration: 0.25),
+        .fadeOpacity(to: 0.85, duration: 1.50),
+        .fadeOpacity(to: 0.15, duration: 1.50),
+        .fadeOpacity(to: 0.85, duration: 1.50),
+        .fadeOut(duration: 0.75),
+        .removeFromParentNode()
+      ])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        print("View appearing. ")
+        
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
@@ -100,6 +108,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         // Pause the view's session
         sceneView.session.pause()
     }
@@ -202,23 +211,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 
                 let cgImage = convertCIImageToCGImage(inputImage: imageToCIImage) else { return }
             
-            let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.5)
+            let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.1)
             
             arImage.name = name
-            
+            print("Loading event image...")
             configuration.detectionImages?.insert(arImage)
         }
         
         for event in events {
+            print("Event iteration. for \(event.imgurkey)")
             let url = URL(string: "https://i.imgur.com/" + event.imgurkey)
+            
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 
                 if error != nil {
+                  print("Error occured.")
                   print(error!)
                   return
                 }
                 
                 DispatchQueue.main.async {
+                    print("Reached here. ")
                     loadEventImage(data: data!, name: event.title)
                 }
             })

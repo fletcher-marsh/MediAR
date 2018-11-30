@@ -28,8 +28,9 @@ protocol OpeningDetailsDelegate {
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-
-
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var previewButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -117,29 +118,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - Buttons/Interaction
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        /*
-         1. Get The Current Touch Location
-         2. Check That We Have Touched A Valid Node
-         3. Check If The Node Has A Name
-         4. Handle The Touch
-         */
-        var touchLoc = touches.first?.location(in: sceneView)
+        let touchLoc = touches.first?.location(in: sceneView)
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
-            print("TOUCH")
+            self.mapButton.isHidden = false
+            self.previewButton.isHidden = false
         } else {
-            print("MISSED")
+            self.mapButton.isHidden = true
+            self.previewButton.isHidden = true
         }
-//        guard let touchLocation = touches.first?.location(in: sceneView),
-//            let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
-//            let nodeName = hitNode.name
-//            else {
-//                // No Node Has Been Tapped
-//                return
-//            }
-        // Handle Event Here e.g. PerformSegue
-//        print(nodeName)
         
     }
     

@@ -210,7 +210,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         
         for event in events {
-            let url = URL(string: event.imgurkey)
+            let url = URL(string: "https://i.imgur.com/" + event.imgurkey)
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 
                 if error != nil {

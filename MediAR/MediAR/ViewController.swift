@@ -28,7 +28,8 @@ protocol OpeningDetailsDelegate {
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-
+    
+    let configuration = ARWorldTrackingConfiguration()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
           fatalError("Missing expected asset catalog resources.")
         }
       
-        let configuration = ARWorldTrackingConfiguration()
+        
         configuration.detectionImages = referenceImages
       
         // Run the view's session
@@ -159,6 +160,53 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
         }
         
+    }
+    
+    // Mark: - Image Loading
+    
+    func loadEventImages(events: [Event]) {
+      //  let arImages = [ARReferenceImage]
+        
+        func loadEventImage(finalurl: URL) {
+            guard let imgurImg = UIImage(named: "title"),
+                
+                let imageToCIImage = CIImage(image: imgurImg),
+                
+                let cgImage = convertCIImageToCGImage(inputImage: imageToCIImage) else { return }
+            
+            let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.5)
+            
+            arImage.name = "Test"
+            
+            configuration.detectionImages?.insert(arImage)
+        }
+        
+        for event in events {
+            let url = URL(string: event.imgurkey)
+            URLSession.shared.dataTask(with: url!, completionHandler: (data, response, error) in
+                
+                if error != nil {
+                  print(error!)
+                  return
+                }
+                
+                DispatchQueue.main.async {
+                  loadEventImage(
+                }
+            )
+            
+            
+        }
+        
+    }
+    
+    func convertCIImageToCGImage(inputImage: CIImage) -> CGImage?
+    {
+        let context = CIContext(options: nil)
+        if let cgImage = context.createCGImage(inputImage, from: inputImage.extent) {
+            return cgImage
+        }
+        return nil
     }
     
 }

@@ -44,14 +44,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // let scene = SCNScene(named: "art.scnassets/ship.scn")!
         // sceneView.scene = scene
         
-        guard let referenceImages =
+       // guard let referenceImages =
             // Load reference images to be scanned for into config
-            ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-                fatalError("Missing expected asset catalog resources.")
-        }
+        //    ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+        //        fatalError("Missing expected asset catalog resources.")
+       // }
         
         
-        configuration.detectionImages = referenceImages
+       // configuration.detectionImages = referenceImages
+        
+        configuration.detectionImages = []
         
         //Grab Events Data
         let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
@@ -205,6 +207,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       //  let arImages = [ARReferenceImage]
         
         func loadEventImage(data: Data, name: String) {
+            print("Starting....")
             guard let imgurImg = UIImage(data: data),
                 
                 let imageToCIImage = CIImage(image: imgurImg),
@@ -222,7 +225,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             print("Event iteration. for \(event.imgurkey)")
             let url = URL(string: "https://i.imgur.com/" + event.imgurkey)
             
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            let downloadImageTask = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 
                 if error != nil {
                   print("Error occured.")
@@ -235,6 +238,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     loadEventImage(data: data!, name: event.title)
                 }
             })
+            
+            downloadImageTask.resume()
         }
         
     }

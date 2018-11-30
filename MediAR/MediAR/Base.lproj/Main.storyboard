@@ -39,20 +39,20 @@
                                     <segue destination="N51-tj-QgJ" kind="show" id="r0g-S4-Rdg"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5D-bg-GGN">
-                                <rect key="frame" x="124" y="476" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="icons8-google-maps-48"/>
-                                <connections>
-                                    <action selector="openMap:" destination="IcE-D7-Q5w" eventType="touchUpInside" id="R4K-Li-413"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rto-Ih-uWy">
                                 <rect key="frame" x="215" y="484" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="right-arrow-circular-button"/>
                                 <connections>
                                     <segue destination="fAf-7t-2qd" kind="show" id="lhE-Yc-uUI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5D-bg-GGN">
+                                <rect key="frame" x="131" y="468" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="icons8-google-maps-48"/>
+                                <connections>
+                                    <action selector="openMap:" destination="IcE-D7-Q5w" eventType="touchUpInside" id="R4K-Li-413"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -212,7 +212,6 @@
         <!--Navigation Controller-->
         <scene sceneID="GOM-Vt-cm2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4o3-hE-bHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="qIA-fL-Ozl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ANt-VS-ndv">
@@ -223,6 +222,7 @@
                         <segue destination="IcE-D7-Q5w" kind="relationship" relationship="rootViewController" id="4oq-pT-XRz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4o3-hE-bHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-50.399999999999999" y="800.14992503748135"/>
         </scene>
@@ -234,6 +234,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ZXj-hg-aIs"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyR-Za-QbY" userLabel="First Responder" sceneMemberID="firstResponder"/>

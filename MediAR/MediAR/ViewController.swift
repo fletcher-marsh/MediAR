@@ -195,7 +195,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func loadEventImages(events: [Event]) {
       //  let arImages = [ARReferenceImage]
         
-        func loadEventImage(data: Data) {
+        func loadEventImage(data: Data, name: String) {
             guard let imgurImg = UIImage(data: data),
                 
                 let imageToCIImage = CIImage(image: imgurImg),
@@ -204,7 +204,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.5)
             
-            arImage.name = "Test"
+            arImage.name = name
             
             configuration.detectionImages?.insert(arImage)
         }
@@ -219,7 +219,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
-                  loadEventImage(data: data!)
+                    loadEventImage(data: data!, name: event.title)
                 }
             })
         }

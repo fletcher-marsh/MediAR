@@ -12,12 +12,12 @@ class Event {
     let title : String
     let imgurkey : String
     let desc : String
-    let lat : String
-    let long : String
+    let lat : Float
+    let long : Float
     let preview : String
     
     
-    init(title: String, imagelink: String, desc: String, lat: String, long: String, preview: String) {
+    init(title: String, imagelink: String, desc: String, lat: Float, long: Float, preview: String) {
         self.title = title
         self.imgurkey = imagelink
         self.desc = desc

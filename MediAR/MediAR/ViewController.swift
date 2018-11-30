@@ -81,8 +81,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 for object in eventdata {
                     let eventName = object["media"].string!
                     let eventPreview = object["preview"].string!
-                    let lat = object["lat"].string!
-                    let long = object["long"].string!
+                    let lat = object["lat"].float!
+                    let long = object["long"].float!
                     let descrip = object["descrip"].string!
                     let img = object["imgurkey"].string!
                     

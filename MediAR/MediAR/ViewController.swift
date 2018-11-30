@@ -124,16 +124,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
          3. Check If The Node Has A Name
          4. Handle The Touch
          */
-        
-        guard let touchLocation = touches.first?.location(in: sceneView),
-            let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
-            let nodeName = hitNode.name
-            else {
-                // No Node Has Been Tapped
-                return
-            }
+        var touchLoc = touches.first?.location(in: sceneView)
+        let touchedNode = sceneView?.hitTest(touchLoc!)
+        if (touchedNode!.count > 0) {
+            print("TOUCH")
+        } else {
+            print("MISSED")
+        }
+//        guard let touchLocation = touches.first?.location(in: sceneView),
+//            let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
+//            let nodeName = hitNode.name
+//            else {
+//                // No Node Has Been Tapped
+//                return
+//            }
         // Handle Event Here e.g. PerformSegue
-        print(nodeName)
+//        print(nodeName)
         
     }
     

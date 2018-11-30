@@ -18,7 +18,7 @@ class Text : Element {
     text.firstMaterial?.diffuse.contents = UIColor.black
     displayNode = SCNNode(geometry: text)
     
-    let size = Float(0.04)
+    let size = Float(0.02)
     displayNode.scale = SCNVector3(size, size, size)
     
     snapToPlane()

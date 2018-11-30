@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MediAR/ViewController.swift"
-            timestampString = "563492195.379824"
+            timestampString = "565288861.506067"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "sessionInterruptionEnded(_:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "sessionWasInterrupted(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

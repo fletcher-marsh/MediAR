@@ -13,7 +13,7 @@ import ARKit
 import AVKit
 import MapKit
 
-
+import SwiftyJSON
 
 // MARK: - Protocols
 
@@ -30,6 +30,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
+    var events: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a new scene (default ship scene)
         // let scene = SCNScene(named: "art.scnassets/ship.scn")!
         // sceneView.scene = scene
+        
+        
     }
   
     // Fade plane out of view
@@ -64,7 +67,32 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       
         
         configuration.detectionImages = referenceImages
-      
+        
+        //Grab Events Data
+        let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
+        
+        let data = NSData(contentsOf: apiURL as URL)!
+        
+        do {
+            let swiftyjson = try JSON(data: data as Data)
+            
+            if let eventdata = swiftyjson["data"].array {
+                
+                for object in eventdata {
+                    let eventName = object["media"].string!
+                    let eventPreview = object["preview"].string!
+                    let lat = object["lat"].string!
+                    let long = object["long"].string!
+                    let descrip = object["descrip"].string!
+                    let img = object["imgurkey"].string!
+                    
+                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview)
+                    events.append(event)
+                }
+            }
+        } catch {
+        }
+        loadEventImages(events: events)
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
@@ -167,8 +195,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func loadEventImages(events: [Event]) {
       //  let arImages = [ARReferenceImage]
         
-        func loadEventImage(finalurl: URL) {
-            guard let imgurImg = UIImage(named: "title"),
+        func loadEventImage(data: Data) {
+            guard let imgurImg = UIImage(data: data),
                 
                 let imageToCIImage = CIImage(image: imgurImg),
                 
@@ -183,7 +211,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         for event in events {
             let url = URL(string: event.imgurkey)
-            URLSession.shared.dataTask(with: url!, completionHandler: (data, response, error) in
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 
                 if error != nil {
                   print(error!)
@@ -191,11 +219,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
-                  loadEventImage(
+                  loadEventImage(data: data!)
                 }
-            )
-            
-            
+            })
         }
         
     }

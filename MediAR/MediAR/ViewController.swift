@@ -13,7 +13,7 @@ import ARKit
 import AVKit
 import MapKit
 
-
+import SwiftyJSON
 
 // MARK: - Protocols
 
@@ -28,17 +28,63 @@ protocol OpeningDetailsDelegate {
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    let configuration = ARWorldTrackingConfiguration()
+    var events: [Event] = []
 
-
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var previewButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
         
+        print("Loaded view." )
+        
         // Create a new scene (default ship scene)
         // let scene = SCNScene(named: "art.scnassets/ship.scn")!
         // sceneView.scene = scene
+        
+       // guard let referenceImages =
+            // Load reference images to be scanned for into config
+        //    ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
+        //        fatalError("Missing expected asset catalog resources.")
+       // }
+        
+        
+       // configuration.detectionImages = referenceImages
+        
+        configuration.detectionImages = []
+        
+        //Grab Events Data
+        let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
+        
+        let data = NSData(contentsOf: apiURL as URL)!
+        
+        do {
+            let swiftyjson = try JSON(data: data as Data)
+            
+            if let eventdata = swiftyjson["data"].array {
+                
+                for object in eventdata {
+                    let eventName = object["media"].string!
+                    let eventPreview = object["preview"].string!
+                    let lat = object["lat"].float!
+                    let long = object["long"].float!
+                    let descrip = object["descrip"].string!
+                    let img = object["imgurkey"].string!
+                    
+                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview)
+                    events.append(event)
+                }
+            }
+        } catch {
+        }
+        loadEventImages(events: events)
+        
+        
     }
   
     // Fade plane out of view
@@ -55,15 +101,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let referenceImages =
-            // Load reference images to be scanned for into config
-            ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-          fatalError("Missing expected asset catalog resources.")
-        }
-      
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.detectionImages = referenceImages
-      
+       
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        print("View appearing. ")
+        
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
@@ -71,6 +113,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         // Pause the view's session
         sceneView.session.pause()
     }
@@ -89,8 +132,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         if let imageAnchor = anchor as? ARImageAnchor {
             // We found a matching anchor, draw plane over it for UI
-            let newPlane = Plane(imageAnchor: imageAnchor)
-            newPlane.addPlaneToScene(node)
+            let img = imageAnchor.referenceImage
+            let newPlane = Plane(referenceImage: img)
+            newPlane.addToScene(node)
+            let newText = Text(input: img.name!)
+            newText.addToScene(newPlane.displayNode)
         }
         return node
     }
@@ -113,24 +159,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Buttons/Interaction
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        /*
-         1. Get The Current Touch Location
-         2. Check That We Have Touched A Valid Node
-         3. Check If The Node Has A Name
-         4. Handle The Touch
-         */
-        
-        guard let touchLocation = touches.first?.location(in: sceneView),
-            let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
-            let nodeName = hitNode.name
-            else {
-                // No Node Has Been Tapped
-                return
+    func reveal(button: UIButton) {
+        button.isHidden = false
+        UIView.animate(withDuration: 0.6, animations: {
+            button.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        }, completion: {
+            _ in UIView.animate(withDuration: 0.6) {
+                button.transform = CGAffineTransform.identity
             }
-        // Handle Event Here e.g. PerformSegue
-        print(nodeName)
+        })
+    }
+    
+    func hide(button: UIButton) {
+        button.isHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touchLoc = touches.first?.location(in: sceneView)
+        let touchedNode = sceneView?.hitTest(touchLoc!)
+        if (touchedNode!.count > 0) {
+            reveal(button: self.mapButton)
+            reveal(button: self.previewButton)
+        } else {
+            hide(button: self.mapButton)
+            hide(button: self.previewButton)
+        }
         
     }
     
@@ -159,6 +212,59 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
         }
         
+    }
+    
+    // Mark: - Image Loading
+    
+    func loadEventImages(events: [Event]) {
+      //  let arImages = [ARReferenceImage]
+        
+        func loadEventImage(data: Data, name: String) {
+            print("Starting....")
+            guard let imgurImg = UIImage(data: data),
+                
+                let imageToCIImage = CIImage(image: imgurImg),
+                
+                let cgImage = convertCIImageToCGImage(inputImage: imageToCIImage) else { return }
+            
+            let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.1)
+            
+            arImage.name = name
+            print("Loading event image...")
+            configuration.detectionImages?.insert(arImage)
+            sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        }
+        
+        for event in events {
+            print("Event iteration. for \(event.imgurkey)")
+            let url = URL(string: "https://i.imgur.com/" + event.imgurkey)
+            
+            let downloadImageTask = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                
+                if error != nil {
+                  print("Error occured.")
+                  print(error!)
+                  return
+                }
+                
+                DispatchQueue.main.async {
+                    print("Reached here. ")
+                    loadEventImage(data: data!, name: event.title)
+                }
+            })
+            
+            downloadImageTask.resume()
+        }
+        
+    }
+    
+    func convertCIImageToCGImage(inputImage: CIImage) -> CGImage?
+    {
+        let context = CIContext(options: nil)
+        if let cgImage = context.createCGImage(inputImage, from: inputImage.extent) {
+            return cgImage
+        }
+        return nil
     }
     
 }

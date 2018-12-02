@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E86E49257B7A9336FB9F5DA /* Pods_MediAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D999FBE11000F74BF87563 /* Pods_MediAR.framework */; };
 		69547EE72195689100485F75 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69547EE62195689100485F75 /* PreviewViewController.swift */; };
+		699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
+		699DBB5021B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
 		69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C6D70421962D6C0000F42C /* DetailsViewController.swift */; };
 		D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008B7218A682E0027E682 /* AppDelegate.swift */; };
 		D32008BA218A682E0027E682 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008B9218A682E0027E682 /* art.scnassets */; };
@@ -17,6 +19,8 @@
 		D32008C1218A682E0027E682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008C0218A682E0027E682 /* Assets.xcassets */; };
 		D32008C4218A682E0027E682 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32008C2218A682E0027E682 /* LaunchScreen.storyboard */; };
 		D32008CF218A682E0027E682 /* MediARTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008CE218A682E0027E682 /* MediARTests.swift */; };
+		D338ADD221B195170031FD8F /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338ADD121B195170031FD8F /* Text.swift */; };
+		D338ADD421B197B30031FD8F /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338ADD321B197B30031FD8F /* Element.swift */; };
 		D37DEB6C21962819004C82C1 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DEB6B21962819004C82C1 /* Plane.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,7 @@
 		55D999FBE11000F74BF87563 /* Pods_MediAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.release.xcconfig"; sourceTree = "<group>"; };
 		69547EE62195689100485F75 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		699DBB4E21B17E0F00AB1E2B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		69C6D70421962D6C0000F42C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
 		D32008B4218A682E0027E682 /* MediAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +52,8 @@
 		D32008CA218A682E0027E682 /* MediARTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediARTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32008CE218A682E0027E682 /* MediARTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediARTests.swift; sourceTree = "<group>"; };
 		D32008D0218A682E0027E682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D338ADD121B195170031FD8F /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		D338ADD321B197B30031FD8F /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		D37DEB6B21962819004C82C1 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +82,14 @@
 				55D999FBE11000F74BF87563 /* Pods_MediAR.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		699DBB4B21B17DCA00AB1E2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				699DBB4E21B17E0F00AB1E2B /* Event.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A1AE1807831638C4FA5B8E6F /* Pods */ = {
@@ -109,6 +124,7 @@
 		D32008B6218A682E0027E682 /* MediAR */ = {
 			isa = PBXGroup;
 			children = (
+				699DBB4B21B17DCA00AB1E2B /* Model */,
 				D37DEB6A219627FE004C82C1 /* Node */,
 				D32008B7218A682E0027E682 /* AppDelegate.swift */,
 				D32008B9218A682E0027E682 /* art.scnassets */,
@@ -135,7 +151,9 @@
 		D37DEB6A219627FE004C82C1 /* Node */ = {
 			isa = PBXGroup;
 			children = (
+				D338ADD321B197B30031FD8F /* Element.swift */,
 				D37DEB6B21962819004C82C1 /* Plane.swift */,
+				D338ADD121B195170031FD8F /* Text.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -249,10 +267,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MediAR/Pods-MediAR-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +309,9 @@
 				D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */,
 				D37DEB6C21962819004C82C1 /* Plane.swift in Sources */,
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
+				699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */,
+				D338ADD221B195170031FD8F /* Text.swift in Sources */,
+				D338ADD421B197B30031FD8F /* Element.swift in Sources */,
 				69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699DBB5021B17E0F00AB1E2B /* Event.swift in Sources */,
 				D32008CF218A682E0027E682 /* MediARTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

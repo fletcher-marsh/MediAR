@@ -117,15 +117,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Buttons/Interaction
     
+    func reveal(button: UIButton) {
+        button.isHidden = false
+        UIView.animate(withDuration: 0.6, animations: {
+            button.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        }, completion: {
+            _ in UIView.animate(withDuration: 0.6) {
+                button.transform = CGAffineTransform.identity
+            }
+        })
+    }
+    
+    func hide(button: UIButton) {
+        button.isHidden = true
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touchLoc = touches.first?.location(in: sceneView)
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
-            self.mapButton.isHidden = false
-            self.previewButton.isHidden = false
+            reveal(button: self.mapButton)
+            reveal(button: self.previewButton)
         } else {
-            self.mapButton.isHidden = true
-            self.previewButton.isHidden = true
+            hide(button: self.mapButton)
+            hide(button: self.previewButton)
         }
         
     }

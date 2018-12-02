@@ -12,13 +12,28 @@ import youtube_ios_player_helper
 class PreviewViewController: UIViewController {
     
     @IBOutlet var playerView: YTPlayerView!
+    
+    var videoID: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.playerView.load(withVideoId: "YKL5tviGvIc");
+       // self.playerView.load(withVideoId: "YKL5tviGvIc");
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (videoID != nil) {
+            self.playerView.load(withVideoId: videoID!)
+        } else {
+            //default to smash ultimate trailer if error occurs.
+            self.playerView.load(withVideoId: "YKL5tviGvIc");
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        videoID = nil
     }
 
     override func didReceiveMemoryWarning() {

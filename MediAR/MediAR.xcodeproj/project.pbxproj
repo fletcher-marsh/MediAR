@@ -11,6 +11,7 @@
 		69547EE72195689100485F75 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69547EE62195689100485F75 /* PreviewViewController.swift */; };
 		699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
 		699DBB5021B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
+		69B5715921B4912100658256 /* EventNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B5715821B4912100658256 /* EventNode.swift */; };
 		69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C6D70421962D6C0000F42C /* DetailsViewController.swift */; };
 		D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008B7218A682E0027E682 /* AppDelegate.swift */; };
 		D32008BA218A682E0027E682 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008B9218A682E0027E682 /* art.scnassets */; };
@@ -39,6 +40,7 @@
 		5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.release.xcconfig"; sourceTree = "<group>"; };
 		69547EE62195689100485F75 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		699DBB4E21B17E0F00AB1E2B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		69B5715821B4912100658256 /* EventNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventNode.swift; sourceTree = "<group>"; };
 		69C6D70421962D6C0000F42C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
 		D32008B4218A682E0027E682 /* MediAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 				D338ADD321B197B30031FD8F /* Element.swift */,
 				D37DEB6B21962819004C82C1 /* Plane.swift */,
 				D338ADD121B195170031FD8F /* Text.swift */,
+				69B5715821B4912100658256 /* EventNode.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				D37DEB6C21962819004C82C1 /* Plane.swift in Sources */,
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
 				699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */,
+				69B5715921B4912100658256 /* EventNode.swift in Sources */,
 				D338ADD221B195170031FD8F /* Text.swift in Sources */,
 				D338ADD421B197B30031FD8F /* Element.swift in Sources */,
 				69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */,

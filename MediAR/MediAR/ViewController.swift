@@ -31,6 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
+    var currentNode: EventNode?
 
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
@@ -42,19 +43,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         print("Loaded view." )
-        
-        // Create a new scene (default ship scene)
-        // let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        // sceneView.scene = scene
-        
-       // guard let referenceImages =
-            // Load reference images to be scanned for into config
-        //    ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-        //        fatalError("Missing expected asset catalog resources.")
-       // }
-        
-        
-       // configuration.detectionImages = referenceImages
         
         configuration.detectionImages = []
         
@@ -128,12 +116,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         // Root node for scene
-        let node = SCNNode()
+        var node = SCNNode()
         
         if let imageAnchor = anchor as? ARImageAnchor {
             // We found a matching anchor, draw plane over it for UI
             let img = imageAnchor.referenceImage
             let newPlane = Plane(referenceImage: img)
+            
+            let perceivedEvent = events.first(where: { $0.title == img.name })
+            
+            if let event = perceivedEvent {
+                node = EventNode(title: event.title, preview: event.preview, lat: event.lat, long: event.long, storelink: nil, desc: event.desc, rating: nil)
+            }
             newPlane.addToScene(node)
             let newText = Text(input: img.name!)
             newText.addToScene(newPlane.displayNode)
@@ -154,6 +148,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is PreviewViewController
+        {
+            if let event = currentNode {
+                let Pvc = segue.destination as? PreviewViewController
+                Pvc?.videoID = event.getPreview()
+            }
+        }
     }
   
     
@@ -178,8 +183,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let touchLoc = touches.first?.location(in: sceneView)
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
-            reveal(button: self.mapButton)
-            reveal(button: self.previewButton)
+            if let hitresult = touchedNode!.first {
+                if let node = hitresult.node as? EventNode {
+                    currentNode = node
+                    revealCorrespondingButtons(event: currentNode!)
+                }
+            }
+            //reveal(button: self.mapButton)
+            //reveal(button: self.previewButton)
         } else {
             hide(button: self.mapButton)
             hide(button: self.previewButton)
@@ -191,27 +202,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func openMap(_ sender: Any) {
         //Working in Swift new versions.
-        guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&origin=Google+Pyrmont+NSW&destination=QVB&destination_place_id=ChIJISz8NjyuEmsRFTQ9Iw7Ear8&travelmode=walking") else { //Sample URL
-            return
-        }
-        // Create an AVPlayer, passing it the HTTP Live Streaming URL.
         
-        let webView:UIWebView = UIWebView()
-        
-        let mapURLRequest:URLRequest = URLRequest(url: url)
-        
-        
-        // Create a new AVPlayerViewController and pass it a reference to the player.
-        let controller = UIViewController()
-        controller.view = webView
-        
-        webView.loadRequest(mapURLRequest)
-        
-        // Modally present the player and call the player's play() method when complete.
-        present(controller, animated: true) {
+        let event = currentNode!
+        if let (lat,long) = event.getLocation() {
+            guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&destination=\(lat),\(long)&travelmode=walking") else { //Sample URL
+                return
+            }
+            // Create an AVPlayer, passing it the HTTP Live Streaming URL.
             
+            let webView:UIWebView = UIWebView()
+            
+            let mapURLRequest:URLRequest = URLRequest(url: url)
+            
+            
+            // Create a new AVPlayerViewController and pass it a reference to the player.
+            let controller = UIViewController()
+            controller.view = webView
+            
+            webView.loadRequest(mapURLRequest)
+            
+            // Modally present the player and call the player's play() method when complete.
+            present(controller, animated: true) {
+                
+            }
         }
-        
     }
     
     // Mark: - Image Loading
@@ -265,6 +279,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             return cgImage
         }
         return nil
+    }
+    
+    func revealCorrespondingButtons(event: EventNode) {
+        if (event.getPreview() != nil) {
+            reveal(button: previewButton)
+        } else { hide(button: previewButton) }
+        if (event.getLocation() != nil) {
+            reveal(button: mapButton)
+        } else { hide(button: mapButton) }
     }
     
 }

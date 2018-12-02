@@ -32,6 +32,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
 
+    @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var previewButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,8 +132,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         if let imageAnchor = anchor as? ARImageAnchor {
             // We found a matching anchor, draw plane over it for UI
-            let newPlane = Plane(imageAnchor: imageAnchor)
-            newPlane.addPlaneToScene(node)
+            let img = imageAnchor.referenceImage
+            let newPlane = Plane(referenceImage: img)
+            newPlane.addToScene(node)
+            let newText = Text(input: img.name!)
+            newText.addToScene(newPlane.displayNode)
         }
         return node
     }
@@ -153,24 +159,31 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Buttons/Interaction
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        /*
-         1. Get The Current Touch Location
-         2. Check That We Have Touched A Valid Node
-         3. Check If The Node Has A Name
-         4. Handle The Touch
-         */
-        
-        guard let touchLocation = touches.first?.location(in: sceneView),
-            let hitNode = sceneView?.hitTest(touchLocation, options: nil).first?.node,
-            let nodeName = hitNode.name
-            else {
-                // No Node Has Been Tapped
-                return
+    func reveal(button: UIButton) {
+        button.isHidden = false
+        UIView.animate(withDuration: 0.6, animations: {
+            button.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        }, completion: {
+            _ in UIView.animate(withDuration: 0.6) {
+                button.transform = CGAffineTransform.identity
             }
-        // Handle Event Here e.g. PerformSegue
-        print(nodeName)
+        })
+    }
+    
+    func hide(button: UIButton) {
+        button.isHidden = true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touchLoc = touches.first?.location(in: sceneView)
+        let touchedNode = sceneView?.hitTest(touchLoc!)
+        if (touchedNode!.count > 0) {
+            reveal(button: self.mapButton)
+            reveal(button: self.previewButton)
+        } else {
+            hide(button: self.mapButton)
+            hide(button: self.previewButton)
+        }
         
     }
     

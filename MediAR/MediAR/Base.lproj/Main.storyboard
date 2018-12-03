@@ -47,13 +47,23 @@
                                     <segue destination="fAf-7t-2qd" kind="show" id="lhE-Yc-uUI"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="end-1A-g8g">
+                                <rect key="frame" x="122" y="607" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="notepad_small"/>
+                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5D-bg-GGN">
-                                <rect key="frame" x="22" y="599" width="48" height="48"/>
+                                <rect key="frame" x="29" y="607" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="icons8-google-maps-48"/>
                                 <connections>
                                     <action selector="openMap:" destination="IcE-D7-Q5w" eventType="touchUpInside" id="R4K-Li-413"/>
                                 </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElH-7K-hgC">
+                                <rect key="frame" x="222" y="607" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ratings"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,8 +71,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="9Og-ip-aPt"/>
                     <connections>
+                        <outlet property="descButton" destination="end-1A-g8g" id="Brs-1O-LX3"/>
                         <outlet property="mapButton" destination="i5D-bg-GGN" id="ery-WS-fiZ"/>
                         <outlet property="previewButton" destination="rto-Ih-uWy" id="eGQ-3F-WkJ"/>
+                        <outlet property="ratingsButton" destination="ElH-7K-hgC" id="t6D-iK-HBq"/>
                         <outlet property="sceneView" destination="mSn-kK-odK" id="7Db-1O-owg"/>
                     </connections>
                 </viewController>
@@ -249,6 +261,8 @@
         <image name="icons8-google-maps-48" width="48" height="48"/>
         <image name="icons8-info-50" width="50" height="50"/>
         <image name="icons8-menu-filled-51" width="50" height="50"/>
+        <image name="notepad_small" width="32" height="32"/>
+        <image name="ratings" width="192" height="192"/>
         <image name="youtube-32" width="32" height="32"/>
     </resources>
 </document>

@@ -33,6 +33,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var events: [Event] = []
 
     @IBOutlet weak var mapButton: UIButton!
+    @IBOutlet weak var descButton: UIButton!
+    @IBOutlet weak var ratingsButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
     
     override func viewDidLoad() {
@@ -40,21 +42,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the view's delegate
         sceneView.delegate = self
-        
-        print("Loaded view." )
-        
-        // Create a new scene (default ship scene)
-        // let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        // sceneView.scene = scene
-        
-       // guard let referenceImages =
-            // Load reference images to be scanned for into config
-        //    ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: nil) else {
-        //        fatalError("Missing expected asset catalog resources.")
-       // }
-        
-        
-       // configuration.detectionImages = referenceImages
         
         configuration.detectionImages = []
         

@@ -31,6 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
+    var childNodes: [SCNNode] = []
 
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
@@ -39,7 +40,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -122,6 +123,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let img = imageAnchor.referenceImage
             let newPlane = Plane(referenceImage: img)
             newPlane.addToScene(node)
+            self.childNodes.append(newPlane.displayNode)
             let newText = Text(input: img.name!)
             newText.addToScene(newPlane.displayNode)
         }
@@ -146,6 +148,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Buttons/Interaction
     
+    func highlightSelected(_ n: SCNNode) {
+        n.opacity = 0.85;
+        for node in self.childNodes {
+            if (node != n) {
+                node.opacity = 0.4;
+            }
+        }
+    }
+    
+    func clearSelected() {
+        for node in self.childNodes {
+            node.opacity = 0.4;
+        }
+    }
+    
     func reveal(button: UIButton) {
         button.isHidden = false
         UIView.animate(withDuration: 0.6, animations: {
@@ -165,17 +182,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let touchLoc = touches.first?.location(in: sceneView)
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
+            highlightSelected(touchedNode![0].node);
             reveal(button: self.mapButton)
             reveal(button: self.descButton)
             reveal(button: self.ratingsButton)
             reveal(button: self.previewButton)
         } else {
+            clearSelected();
             hide(button: self.mapButton)
             hide(button: self.descButton)
             hide(button: self.ratingsButton)
             hide(button: self.previewButton)
         }
-        
     }
     
     // MARK: - External Calls

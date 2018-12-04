@@ -15,8 +15,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet private var moviedesc: UILabel!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-
+      super.viewDidLoad()
+      self.navigationController?.navigationBar.isHidden = true;
         // Do any additional setup after loading the view.
     }
     

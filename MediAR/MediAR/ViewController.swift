@@ -100,7 +100,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         // Pause the view's session
         sceneView.session.pause()
     }
@@ -166,9 +166,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
             reveal(button: self.mapButton)
+            reveal(button: self.descButton)
+            reveal(button: self.ratingsButton)
             reveal(button: self.previewButton)
         } else {
             hide(button: self.mapButton)
+            hide(button: self.descButton)
+            hide(button: self.ratingsButton)
             hide(button: self.previewButton)
         }
         

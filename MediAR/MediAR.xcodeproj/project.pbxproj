@@ -12,6 +12,7 @@
 		699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
 		699DBB5021B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
 		69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C6D70421962D6C0000F42C /* DetailsViewController.swift */; };
+		D314CA6B21B5F6F700309C7C /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D314CA6A21B5F6F700309C7C /* RatingViewController.swift */; };
 		D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008B7218A682E0027E682 /* AppDelegate.swift */; };
 		D32008BA218A682E0027E682 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D32008B9218A682E0027E682 /* art.scnassets */; };
 		D32008BC218A682E0027E682 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32008BB218A682E0027E682 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 		699DBB4E21B17E0F00AB1E2B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		69C6D70421962D6C0000F42C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
+		D314CA6A21B5F6F700309C7C /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		D32008B4218A682E0027E682 /* MediAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32008B7218A682E0027E682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D32008B9218A682E0027E682 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				D32008C0218A682E0027E682 /* Assets.xcassets */,
 				D32008C2218A682E0027E682 /* LaunchScreen.storyboard */,
 				D32008C5218A682E0027E682 /* Info.plist */,
+				D314CA6A21B5F6F700309C7C /* RatingViewController.swift */,
 			);
 			path = MediAR;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
 				699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */,
 				D338ADD221B195170031FD8F /* Text.swift in Sources */,
+				D314CA6B21B5F6F700309C7C /* RatingViewController.swift in Sources */,
 				D338ADD421B197B30031FD8F /* Element.swift in Sources */,
 				69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */,
 			);

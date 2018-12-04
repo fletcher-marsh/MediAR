@@ -12,6 +12,7 @@ import ARKit
 
 import AVKit
 import MapKit
+import CoreLocation
 
 import SwiftyJSON
 
@@ -35,6 +36,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var childNodes: [SCNNode] = []
     var liveEvents: [String: Event] = [:]
     var previewVideoID = "vjnqABgxfO0"
+    
+    var toLat : Float?
+    var toLong : Float?
+    
+    
 
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
@@ -158,16 +164,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Buttons/Interaction
     
+    func updateSelectedInfo(_ name: String) {
+        self.previewVideoID = self.liveEvents[name]!.preview
+        self.toLat = self.liveEvents[name]!.lat
+        self.toLong = self.liveEvents[name]!.long
+    }
+    
     func highlightSelected(_ n: SCNNode) {
         var temp = n;
         if let geo = n.geometry! as? SCNText {
             let name = geo.string as? String
+            updateSelectedInfo(name!)
             temp = n.parent!
-            self.previewVideoID = self.liveEvents[name!]!.preview
         } else if n.geometry! is SCNPlane {
             let child = n.childNodes[0].geometry! as? SCNText
             let name = child!.string as? String
-            self.previewVideoID = self.liveEvents[name!]!.preview
+            updateSelectedInfo(name!)
         } else {
             return
         }
@@ -234,7 +246,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBAction func openMap(_ sender: Any) {
         //Working in Swift new versions.
-        guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&origin=Google+Pyrmont+NSW&destination=QVB&destination_place_id=ChIJISz8NjyuEmsRFTQ9Iw7Ear8&travelmode=walking") else { //Sample URL
+        
+        guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&origin=CMU&destination=\(self.toLat!),\(self.toLong!)") else { //Sample URL
             return
         }
         // Create an AVPlayer, passing it the HTTP Live Streaming URL.

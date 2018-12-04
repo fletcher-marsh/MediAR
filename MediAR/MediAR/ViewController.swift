@@ -25,6 +25,7 @@ protocol OpeningDetailsDelegate {
     func openDetails(title: String, ratings: String, description: String)
 }
 
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
@@ -32,6 +33,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
     var childNodes: [SCNNode] = []
+    var liveEvents: [String: Event] = [:]
+    var previewVideoID = "vjnqABgxfO0"
 
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
@@ -92,8 +95,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
        
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        print("View appearing. ")
-        
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
@@ -113,6 +114,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
 
+    func getCurrentInfo (_ node: SCNNode, _ img: ARReferenceImage) {
+        self.childNodes.append(node)
+        for e in self.events {
+            if (e.title == img.name!) {
+                self.liveEvents[e.title] = e
+            }
+        }
+    }
+    
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         // Root node for scene
@@ -123,7 +133,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let img = imageAnchor.referenceImage
             let newPlane = Plane(referenceImage: img)
             newPlane.addToScene(node)
-            self.childNodes.append(newPlane.displayNode)
+            getCurrentInfo(newPlane.displayNode, img)
             let newText = Text(input: img.name!)
             newText.addToScene(newPlane.displayNode)
         }
@@ -149,7 +159,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     // MARK: - Buttons/Interaction
     
     func highlightSelected(_ n: SCNNode) {
-        n.opacity = 0.85;
+        var temp = n;
+        if let geo = n.geometry! as? SCNText {
+            let name = geo.string as? String
+            temp = n.parent!
+            self.previewVideoID = self.liveEvents[name!]!.preview
+        } else if n.geometry! is SCNPlane {
+            let child = n.childNodes[0].geometry! as? SCNText
+            let name = child!.string as? String
+            self.previewVideoID = self.liveEvents[name!]!.preview
+        } else {
+            return
+        }
+        
+        temp.opacity = 0.85;
         for node in self.childNodes {
             if (node != n) {
                 node.opacity = 0.4;
@@ -196,6 +219,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.destination is PreviewViewController {
+            let pvc = segue.destination as? PreviewViewController
+            pvc?.videoID = self.previewVideoID
+        }
+    }
+    
     // MARK: - External Calls
     
     @IBAction func openMap(_ sender: Any) {
@@ -229,7 +263,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       //  let arImages = [ARReferenceImage]
         
         func loadEventImage(data: Data, name: String) {
-            print("Starting....")
             guard let imgurImg = UIImage(data: data),
                 
                 let imageToCIImage = CIImage(image: imgurImg),
@@ -239,13 +272,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.1)
             
             arImage.name = name
-            print("Loading event image...")
             configuration.detectionImages?.insert(arImage)
             sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         }
         
         for event in events {
-            print("Event iteration. for \(event.imgurkey)")
             let url = URL(string: "https://i.imgur.com/" + event.imgurkey)
             
             let downloadImageTask = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -257,7 +288,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
-                    print("Reached here. ")
                     loadEventImage(data: data!, name: event.title)
                 }
             })

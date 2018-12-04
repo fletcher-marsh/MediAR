@@ -10,8 +10,6 @@ import Foundation
 import ARKit
 
 class Plane : Element {
-  //Store information for segue's into other views later.
-  
   init(referenceImage: ARReferenceImage) {
     // Store matched poster image
     super.init(referenceImage)

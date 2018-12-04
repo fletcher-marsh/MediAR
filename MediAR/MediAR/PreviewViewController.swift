@@ -12,11 +12,12 @@ import youtube_ios_player_helper
 class PreviewViewController: UIViewController {
     
     @IBOutlet var playerView: YTPlayerView!
-
+    var videoID = "vjnqABgxfO0";
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.playerView.load(withVideoId: "YKL5tviGvIc");
+        self.playerView.load(withVideoId: self.videoID);
 
         // Do any additional setup after loading the view.
     }

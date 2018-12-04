@@ -12,6 +12,7 @@ import ARKit
 
 import AVKit
 import MapKit
+import CoreLocation
 
 import SwiftyJSON
 
@@ -25,12 +26,21 @@ protocol OpeningDetailsDelegate {
     func openDetails(title: String, ratings: String, description: String)
 }
 
+
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
+    var childNodes: [SCNNode] = []
+    var liveEvents: [String: Event] = [:]
+    var previewVideoID = "vjnqABgxfO0"
+    
+    var toLat : Float?
+    var toLong : Float?
+    
+    
 
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
@@ -39,7 +49,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -97,8 +107,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
        
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
-        print("View appearing. ")
-        
         // Run the view's session
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
@@ -118,6 +126,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     // MARK: - ARSCNViewDelegate
 
+    func getCurrentInfo (_ node: SCNNode, _ img: ARReferenceImage) {
+        self.childNodes.append(node)
+        for e in self.events {
+            if (e.title == img.name!) {
+                self.liveEvents[e.title] = e
+            }
+        }
+    }
+    
     // Override to create and configure nodes for anchors added to the view's session.
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         // Root node for scene
@@ -128,6 +145,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let img = imageAnchor.referenceImage
             let newPlane = Plane(referenceImage: img)
             newPlane.addToScene(node)
+            getCurrentInfo(newPlane.displayNode, img)
             let newText = Text(input: img.name!)
             newText.addToScene(newPlane.displayNode)
         }
@@ -152,6 +170,40 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Buttons/Interaction
     
+    func updateSelectedInfo(_ name: String) {
+        self.previewVideoID = self.liveEvents[name]!.preview
+        self.toLat = self.liveEvents[name]!.lat
+        self.toLong = self.liveEvents[name]!.long
+    }
+    
+    func highlightSelected(_ n: SCNNode) {
+        var temp = n;
+        if let geo = n.geometry! as? SCNText {
+            let name = geo.string as? String
+            updateSelectedInfo(name!)
+            temp = n.parent!
+        } else if n.geometry! is SCNPlane {
+            let child = n.childNodes[0].geometry! as? SCNText
+            let name = child!.string as? String
+            updateSelectedInfo(name!)
+        } else {
+            return
+        }
+        
+        temp.opacity = 0.85;
+        for node in self.childNodes {
+            if (node != n) {
+                node.opacity = 0.4;
+            }
+        }
+    }
+    
+    func clearSelected() {
+        for node in self.childNodes {
+            node.opacity = 0.4;
+        }
+    }
+    
     func reveal(button: UIButton) {
         button.isHidden = false
         UIView.animate(withDuration: 0.6, animations: {
@@ -171,24 +223,37 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let touchLoc = touches.first?.location(in: sceneView)
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
+            highlightSelected(touchedNode![0].node);
             reveal(button: self.mapButton)
             reveal(button: self.descButton)
             reveal(button: self.ratingsButton)
             reveal(button: self.previewButton)
         } else {
+            clearSelected();
             hide(button: self.mapButton)
             hide(button: self.descButton)
             hide(button: self.ratingsButton)
             hide(button: self.previewButton)
         }
-        
+    }
+    
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        if segue.destination is PreviewViewController {
+            let pvc = segue.destination as? PreviewViewController
+            pvc?.videoID = self.previewVideoID
+        }
     }
     
     // MARK: - External Calls
     
     @IBAction func openMap(_ sender: Any) {
         //Working in Swift new versions.
-        guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&origin=Google+Pyrmont+NSW&destination=QVB&destination_place_id=ChIJISz8NjyuEmsRFTQ9Iw7Ear8&travelmode=walking") else { //Sample URL
+        
+        guard let url = URL(string: "https://www.google.com/maps/dir/?api=1&origin=CMU&destination=\(self.toLat!),\(self.toLong!)") else { //Sample URL
             return
         }
         // Create an AVPlayer, passing it the HTTP Live Streaming URL.
@@ -217,7 +282,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
       //  let arImages = [ARReferenceImage]
         
         func loadEventImage(data: Data, name: String) {
-            print("Starting....")
             guard let imgurImg = UIImage(data: data),
                 
                 let imageToCIImage = CIImage(image: imgurImg),
@@ -227,13 +291,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let arImage = ARReferenceImage(cgImage, orientation: CGImagePropertyOrientation.up, physicalWidth: 0.1)
             
             arImage.name = name
-            print("Loading event image...")
             configuration.detectionImages?.insert(arImage)
             sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         }
         
         for event in events {
-            print("Event iteration. for \(event.imgurkey)")
             let url = URL(string: "https://i.imgur.com/" + event.imgurkey)
             
             let downloadImageTask = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -245,7 +307,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
-                    print("Reached here. ")
                     loadEventImage(data: data!, name: event.title)
                 }
             })

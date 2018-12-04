@@ -29,24 +29,22 @@ protocol OpeningDetailsDelegate {
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
-    @IBOutlet var sceneView: ARSCNView!
-    
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
     var childNodes: [SCNNode] = []
     var liveEvents: [String: Event] = [:]
     var previewVideoID = "vjnqABgxfO0"
-    
     var toLat : Float?
     var toLong : Float?
     
-    
-
+    @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
     @IBOutlet weak var ratingsButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
     
+    // MARK: - Views
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -119,11 +117,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-
+    
     // MARK: - ARSCNViewDelegate
 
     func getCurrentInfo (_ node: SCNNode, _ img: ARReferenceImage) {

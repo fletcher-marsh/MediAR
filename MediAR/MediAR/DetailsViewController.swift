@@ -9,7 +9,8 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-    
+    var mTitle = "Grinch"
+    var mDesc = "A spiteful green fellow attempts to ruin Christmas for a small town"
     @IBOutlet var movietitle: UILabel!
     @IBOutlet var moviedesc: UILabel!
 
@@ -19,6 +20,8 @@ class DetailsViewController: UIViewController {
         
         moviedesc.numberOfLines = 0
         // Do any additional setup after loading the view.
+        movietitle.text = mTitle
+        moviedesc.text = mDesc
     }
     
     

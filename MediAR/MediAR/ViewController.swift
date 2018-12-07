@@ -29,14 +29,11 @@ protocol OpeningDetailsDelegate {
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
-    @IBOutlet var sceneView: ARSCNView!
-    
     let configuration = ARWorldTrackingConfiguration()
     var events: [Event] = []
     var childNodes: [SCNNode] = []
     var liveEvents: [String: Event] = [:]
     var previewVideoID = "vjnqABgxfO0"
-    
     var toLat : Float?
     var toLong : Float?
     var eventName : String?
@@ -44,12 +41,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var ratings : [String]?
     
 
-
+    @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
     @IBOutlet weak var ratingsButton: UIButton!
     @IBOutlet weak var previewButton: UIButton!
     
+    // MARK: - Views
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -122,11 +121,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-
+    
     // MARK: - ARSCNViewDelegate
 
     func getCurrentInfo (_ node: SCNNode, _ img: ARReferenceImage) {
@@ -253,8 +251,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         else if segue.destination is DetailsViewController {
             let dvc = segue.destination as? DetailsViewController
-            dvc?.moviedesc.text = self.desc
-            dvc?.movietitle.text = self.eventName
+            dvc?.mDesc = self.desc!
+            dvc?.mTitle = self.eventName!
         } else if segue.destination is RatingsViewController {
             let rvc = segue.destination as? RatingsViewController
             let ratingSplit : [[String]] = self.ratings!.map { $0.components(separatedBy: "+") }
@@ -297,7 +295,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func storeRatings(event: Event) {
         do {
             let plussedString = event.title.replacingOccurrences(of: " ", with: "+")
-            let omdbURL: NSURL = NSURL(string: "http://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")!
+//            print("https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")
+            let omdbURL: NSURL = NSURL(string: "https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")!
             
             let data = NSData(contentsOf: omdbURL as URL)!
             

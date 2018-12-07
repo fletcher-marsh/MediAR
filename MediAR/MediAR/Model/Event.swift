@@ -10,7 +10,6 @@ import Foundation
 import SwiftyJSON
 
 class Event {
-    // Model
     let title : String
     let imgurkey : String
     let desc : String

@@ -22,7 +22,7 @@ class Plane : Element {
     self.displayNode = SCNNode(geometry: geometry)
     
     // Be able to somewhat see poster under plane
-    self.displayNode.opacity = 0.75
+    self.displayNode.opacity = 0.4
     
     // Plane initializes as being oriented against flat dimensions, change to be vertical
     self.displayNode.eulerAngles.x = -.pi / 2

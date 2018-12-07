@@ -16,6 +16,7 @@ import CoreLocation
 
 import SwiftyJSON
 
+import CoreFoundation
 // MARK: - Protocols
 
 protocol OpeningRouteDelegate {
@@ -204,10 +205,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let touchedNode = sceneView?.hitTest(touchLoc!)
         if (touchedNode!.count > 0) {
             highlightSelected(touchedNode![0].node);
-            reveal(button: self.mapButton)
-            reveal(button: self.descButton)
-            reveal(button: self.ratingsButton)
-            reveal(button: self.previewButton)
+            if ((self.toLat != nil) && (self.toLong != nil)) {  reveal(button: self.mapButton) }
+            if (self.desc != nil) { reveal(button: self.descButton) }
+            if (self.ratings != nil) { reveal(button: self.ratingsButton) }
+            if (self.previewVideoID != nil) { reveal(button: self.previewButton) }
         } else {
             clearSelected();
             hide(button: self.mapButton)
@@ -272,7 +273,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func storeRatings(event: Event) {
         do {
             let plussedString = event.title.replacingOccurrences(of: " ", with: "+")
-//            print("https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")
             let omdbURL: NSURL = NSURL(string: "https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")!
             
             let data = NSData(contentsOf: omdbURL as URL)!
@@ -282,7 +282,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             var ratings = [String]();
             
             for(_, rating) in swiftyjson["Ratings"] {
-                ratings.append("\(rating["Source"])+\(rating["Value"])")
+                //Convert all ratings to percentage
+                var ratVal = rating["Value"].string!
+                if (!ratVal.contains("%")) {
+                    var perc : Float = 0
+                    let ratSplit = ratVal.components(separatedBy: "/")
+                    do {
+                        perc = Float(ratSplit[0])!/Float(ratSplit[1])!
+                        ratVal = String(perc)
+                    } catch { }
+                }
+                ratings.append("\(rating["Source"])+\(ratVal)")
             }
             event.ratings = ratings
         } catch { event.ratings = [String](); }

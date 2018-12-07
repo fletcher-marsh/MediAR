@@ -28,7 +28,7 @@ class RatingsViewController: UIViewController, UITableViewDataSource, UITableVie
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(ratingSources, ratingValues)
         // Do any additional setup after loading the view.
     }
 

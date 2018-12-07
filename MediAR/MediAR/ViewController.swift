@@ -177,6 +177,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.toLong = self.liveEvents[name]!.long
         self.desc = self.liveEvents[name]!.desc
         self.eventName = self.liveEvents[name]!.title
+        self.ratings = self.liveEvents[name]!.ratings
     }
     
     func highlightSelected(_ n: SCNNode) {
@@ -256,7 +257,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         } else if segue.destination is RatingsViewController {
             let rvc = segue.destination as? RatingsViewController
             let ratingSplit : [[String]] = self.ratings!.map { $0.components(separatedBy: "+") }
-
+            print(ratingSplit)
             rvc?.ratingSources = ratingSplit[0]
             rvc?.ratingValues = ratingSplit[1]
         }

@@ -190,10 +190,26 @@
             </objects>
             <point key="canvasLocation" x="2544.8000000000002" y="360.2698650674663"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
+        <scene sceneID="mCB-iX-QDO">
+            <objects>
+                <viewController id="R7h-SF-5uz" customClass="HistoryViewController" customModule="MediAR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="79D-ho-Jy7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ah6-T5-R09"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9st-p6-Z1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673" y="-933"/>
+        </scene>
+        <!--Menu View Controller-->
         <scene sceneID="hcm-1e-SDg">
             <objects>
-                <viewController id="jc3-HO-iH1" sceneMemberID="viewController">
+                <viewController id="jc3-HO-iH1" customClass="MenuViewController" customModule="MediAR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rRs-bH-6Dv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,6 +221,9 @@
                                 <state key="normal" title="    History" image="history">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="R7h-SF-5uz" kind="show" id="Yj2-96-wUY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t37-Dt-Mme">
                                 <rect key="frame" x="115" y="198" width="154" height="64"/>
@@ -221,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8h-Ou-K2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="-313"/>
+            <point key="canvasLocation" x="78" y="-243"/>
         </scene>
         <!--Preview View Controller-->
         <scene sceneID="2V9-O4-vIz">

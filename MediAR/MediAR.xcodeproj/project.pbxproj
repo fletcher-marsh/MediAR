@@ -23,6 +23,8 @@
 		D338ADD221B195170031FD8F /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338ADD121B195170031FD8F /* Text.swift */; };
 		D338ADD421B197B30031FD8F /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338ADD321B197B30031FD8F /* Element.swift */; };
 		D37DEB6C21962819004C82C1 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37DEB6B21962819004C82C1 /* Plane.swift */; };
+		D3ACC90221BA35E300940D35 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ACC90121BA35E300940D35 /* HistoryViewController.swift */; };
+		D3ACC90421BA37AB00940D35 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ACC90321BA37AB00940D35 /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 		55D999FBE11000F74BF87563 /* Pods_MediAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.release.xcconfig"; sourceTree = "<group>"; };
 		69547EE62195689100485F75 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
-		699DBB4E21B17E0F00AB1E2B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		699DBB4E21B17E0F00AB1E2B /* Event.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; tabWidth = 4; };
 		69C6D70421962D6C0000F42C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
 		D314CA6A21B5F6F700309C7C /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,8 @@
 		D338ADD121B195170031FD8F /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		D338ADD321B197B30031FD8F /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		D37DEB6B21962819004C82C1 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		D3ACC90121BA35E300940D35 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		D3ACC90321BA37AB00940D35 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,8 @@
 				D32008C2218A682E0027E682 /* LaunchScreen.storyboard */,
 				D32008C5218A682E0027E682 /* Info.plist */,
 				D314CA6A21B5F6F700309C7C /* RatingViewController.swift */,
+				D3ACC90121BA35E300940D35 /* HistoryViewController.swift */,
+				D3ACC90321BA37AB00940D35 /* MenuViewController.swift */,
 			);
 			path = MediAR;
 			sourceTree = "<group>";
@@ -311,6 +317,8 @@
 				D32008BC218A682E0027E682 /* ViewController.swift in Sources */,
 				D32008B8218A682E0027E682 /* AppDelegate.swift in Sources */,
 				D37DEB6C21962819004C82C1 /* Plane.swift in Sources */,
+				D3ACC90221BA35E300940D35 /* HistoryViewController.swift in Sources */,
+				D3ACC90421BA37AB00940D35 /* MenuViewController.swift in Sources */,
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
 				699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */,
 				D338ADD221B195170031FD8F /* Text.swift in Sources */,

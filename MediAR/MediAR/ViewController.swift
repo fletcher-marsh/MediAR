@@ -54,37 +54,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.tintColor = UIColor.black;
         
-        // Set the view's delegate
         sceneView.delegate = self
         
         configuration.detectionImages = []
         
-        //Grab Events Data
-        let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
-        
-        let data = NSData(contentsOf: apiURL as URL)!
-        
-        do {
-            let swiftyjson = try JSON(data: data as Data)
-            
-            if let eventdata = swiftyjson["data"].array {
-                
-                for object in eventdata {
-                    let eventName = object["media"].string!
-                    let eventPreview = object["preview"].string!
-                    let lat = object["lat"].float!
-                    let long = object["long"].float!
-                    let descrip = object["descrip"].string!
-                    let img = object["imgurkey"].string!
-                    
-                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview)
-                    events.append(event)
-                }
-            }
-        } catch {
-        }
+        // Grab Events Data
+        events = Event.getAll()
         loadEventImages(events: events)
-        
         
     }
   

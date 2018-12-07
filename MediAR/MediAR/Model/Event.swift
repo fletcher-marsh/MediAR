@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class Event {
+    // Model
     let title : String
     let imgurkey : String
     let desc : String
     let lat : Float
     let long : Float
     let preview : String
-    
     
     init(title: String, imagelink: String, desc: String, lat: Float, long: Float, preview: String) {
         self.title = title
@@ -24,5 +25,36 @@ class Event {
         self.lat = lat
         self.long = long
         self.preview = preview
+    }
+    
+    static func getFromBackend(data: NSData) -> [Event] {
+        var events : [Event] = []
+        do {
+            let swiftyjson = try JSON(data: data as Data)
+            
+            if let eventdata = swiftyjson["data"].array {
+                
+                for object in eventdata {
+                    let eventName = object["media"].string!
+                    let eventPreview = object["preview"].string!
+                    let lat = object["lat"].float!
+                    let long = object["long"].float!
+                    let descrip = object["descrip"].string!
+                    let img = object["imgurkey"].string!
+                    
+                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview)
+                    events.append(event)
+                }
+            }
+        } catch {}
+        return events
+    }
+
+    
+  
+    static func getAll() -> [Event] {
+        let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
+        let data = NSData(contentsOf: apiURL as URL)!
+        return getFromBackend(data: data)
     }
 }

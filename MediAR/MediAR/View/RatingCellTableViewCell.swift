@@ -9,9 +9,9 @@
 import UIKit
 
 class RatingCellTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var ratingSource: UILabel!
-    @IBOutlet weak var ratingValue: UILabel!
+  
+    @IBOutlet weak var rSource: UILabel!
+    @IBOutlet weak var rValue: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

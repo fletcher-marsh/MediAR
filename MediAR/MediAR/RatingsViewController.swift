@@ -21,8 +21,8 @@ class RatingsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ratingsCell", for: indexPath) as! RatingCellTableViewCell
-        cell.ratingSource.text = ratingSources![indexPath.item]
-        cell.ratingValue.text = ratingValues![indexPath.item]
+        cell.rSource.text = ratingSources![indexPath.item]
+        cell.rValue.text = ratingValues![indexPath.item]
         return cell
     }
     

@@ -258,8 +258,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let rvc = segue.destination as? RatingsViewController
             let ratingSplit : [[String]] = self.ratings!.map { $0.components(separatedBy: "+") }
             print(ratingSplit)
-            rvc?.ratingSources = ratingSplit[0]
-            rvc?.ratingValues = ratingSplit[1]
+            rvc?.ratingSources = ratingSplit.map { $0[0] }
+            rvc?.ratingValues = ratingSplit.map { $0[1] }
         }
     }
     

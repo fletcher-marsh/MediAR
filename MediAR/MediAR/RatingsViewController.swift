@@ -10,6 +10,8 @@ import UIKit
 
 class RatingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet var tableView : UITableView?
+    
     var ratingSources : [String]?
     var ratingValues : [String]?
     
@@ -29,6 +31,7 @@ class RatingsViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         print(ratingSources, ratingValues)
+        tableView?.dataSource = self
         // Do any additional setup after loading the view.
     }
 

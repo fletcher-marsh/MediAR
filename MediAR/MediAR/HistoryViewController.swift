@@ -14,8 +14,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150.0;//Choose your custom row height
     }
     
@@ -31,20 +30,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
         let url = URL(string:urlString.trimmingCharacters(in: .whitespaces))
         let request = URLRequest(url: url!)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                DispatchQueue.main.async {
-
-                }
+            guard let data = data, error == nil else {
+                // Networking error
                 return
             }
             let imgurImg = UIImage(data: data)
-            let httpStatus = response as? HTTPURLResponse
-            let httpStatusCode:Int = (httpStatus?.statusCode)!
-            
-            DispatchQueue.main.async {
-                
-            }
             completion(imgurImg!)
         }
         task.resume()
@@ -67,6 +57,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.isTranslucent = false
+        tableView.bringSubview(toFront: tableView)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
 
 

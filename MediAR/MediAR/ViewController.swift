@@ -233,7 +233,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         } else if segue.destination is RatingsViewController {
             let rvc = segue.destination as? RatingsViewController
             let ratingSplit : [[String]] = self.ratings!.map { $0.components(separatedBy: "+") }
-            print(ratingSplit)
             rvc?.ratingSources = ratingSplit.map { $0[0] }
             rvc?.ratingValues = ratingSplit.map { $0[1] }
         }
@@ -272,7 +271,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func storeRatings(event: Event) {
         do {
             let plussedString = event.title.replacingOccurrences(of: " ", with: "+")
-//            print("https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")
             let omdbURL: NSURL = NSURL(string: "https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")!
             
             let data = NSData(contentsOf: omdbURL as URL)!

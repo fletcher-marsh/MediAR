@@ -39,8 +39,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     var toLat : Float?
     var toLong : Float?
+    var eventName : String?
+    var desc : String?
+    var ratings : [String]?
     
-    
+
 
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
@@ -79,7 +82,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     let descrip = object["descrip"].string!
                     let img = object["imgurkey"].string!
                     
-                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview)
+                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview, ratings: nil)
                     events.append(event)
                 }
             }
@@ -174,6 +177,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.previewVideoID = self.liveEvents[name]!.preview
         self.toLat = self.liveEvents[name]!.lat
         self.toLong = self.liveEvents[name]!.long
+        self.desc = self.liveEvents[name]!.desc
+        self.eventName = self.liveEvents[name]!.title
     }
     
     func highlightSelected(_ n: SCNNode) {
@@ -246,6 +251,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let pvc = segue.destination as? PreviewViewController
             pvc?.videoID = self.previewVideoID
         }
+        else if segue.destination is DetailsViewController {
+            let dvc = segue.destination as? DetailsViewController
+            dvc?.moviedesc.text = self.desc
+            dvc?.movietitle.text = self.eventName
+        } else if segue.destination is RatingsViewController {
+            let rvc = segue.destination as? RatingsViewController
+            let ratingSplit : [[String]] = self.ratings!.map { $0.components(separatedBy: "+") }
+
+            rvc?.ratingSources = ratingSplit[0]
+            rvc?.ratingValues = ratingSplit[1]
+        }
     }
     
     // MARK: - External Calls
@@ -276,7 +292,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    // Mark: - URL Loading
+    
+    func storeRatings(event: Event) {
+        do {
+            let plussedString = event.title.replacingOccurrences(of: " ", with: "+")
+            let omdbURL: NSURL = NSURL(string: "http://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")!
+            
+            let data = NSData(contentsOf: omdbURL as URL)!
+            
+            let swiftyjson = try JSON(data: data as Data)
+            
+            var ratings = [String]();
+            
+            for(_, rating) in swiftyjson["Ratings"] {
+                ratings.append("\(rating["Source"])+\(rating["Value"])")
+            }
+            event.ratings = ratings
+        } catch { event.ratings = [String](); }
+    }
+    
     // Mark: - Image Loading
+
     
     func loadEventImages(events: [Event]) {
       //  let arImages = [ARReferenceImage]
@@ -307,6 +344,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
+                    self.storeRatings(event: event)
                     loadEventImage(data: data!, name: event.title)
                 }
             })

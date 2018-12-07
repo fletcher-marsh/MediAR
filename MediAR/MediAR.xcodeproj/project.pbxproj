@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0E86E49257B7A9336FB9F5DA /* Pods_MediAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D999FBE11000F74BF87563 /* Pods_MediAR.framework */; };
 		69547EE72195689100485F75 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69547EE62195689100485F75 /* PreviewViewController.swift */; };
+		699C07F821BA372A00C884CF /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699C07F721BA372A00C884CF /* RatingsViewController.swift */; };
+		699C07FB21BA37AB00C884CF /* RatingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699C07FA21BA37AB00C884CF /* RatingCellTableViewCell.swift */; };
 		699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
 		699DBB5021B17E0F00AB1E2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699DBB4E21B17E0F00AB1E2B /* Event.swift */; };
 		69C6D70521962D6C0000F42C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C6D70421962D6C0000F42C /* DetailsViewController.swift */; };
@@ -39,6 +41,8 @@
 		55D999FBE11000F74BF87563 /* Pods_MediAR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MediAR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DA9C225A503F84D711B2D06 /* Pods-MediAR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.release.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.release.xcconfig"; sourceTree = "<group>"; };
 		69547EE62195689100485F75 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		699C07F721BA372A00C884CF /* RatingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsViewController.swift; sourceTree = "<group>"; };
+		699C07FA21BA37AB00C884CF /* RatingCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCellTableViewCell.swift; sourceTree = "<group>"; };
 		699DBB4E21B17E0F00AB1E2B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		69C6D70421962D6C0000F42C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		82FCB66E6B2D3888428B416C /* Pods-MediAR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediAR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MediAR/Pods-MediAR.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,6 +90,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		699C07F921BA378000C884CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				699C07FA21BA37AB00C884CF /* RatingCellTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		699DBB4B21B17DCA00AB1E2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,11 +138,13 @@
 		D32008B6218A682E0027E682 /* MediAR */ = {
 			isa = PBXGroup;
 			children = (
+				699C07F921BA378000C884CF /* View */,
 				699DBB4B21B17DCA00AB1E2B /* Model */,
 				D37DEB6A219627FE004C82C1 /* Node */,
 				D32008B7218A682E0027E682 /* AppDelegate.swift */,
 				D32008B9218A682E0027E682 /* art.scnassets */,
 				D32008BB218A682E0027E682 /* ViewController.swift */,
+				699C07F721BA372A00C884CF /* RatingsViewController.swift */,
 				D32008BD218A682E0027E682 /* Main.storyboard */,
 				69C6D70421962D6C0000F42C /* DetailsViewController.swift */,
 				69547EE62195689100485F75 /* PreviewViewController.swift */,
@@ -313,6 +327,8 @@
 				D37DEB6C21962819004C82C1 /* Plane.swift in Sources */,
 				69547EE72195689100485F75 /* PreviewViewController.swift in Sources */,
 				699DBB4F21B17E0F00AB1E2B /* Event.swift in Sources */,
+				699C07FB21BA37AB00C884CF /* RatingCellTableViewCell.swift in Sources */,
+				699C07F821BA372A00C884CF /* RatingsViewController.swift in Sources */,
 				D338ADD221B195170031FD8F /* Text.swift in Sources */,
 				D314CA6B21B5F6F700309C7C /* RatingViewController.swift in Sources */,
 				D338ADD421B197B30031FD8F /* Element.swift in Sources */,

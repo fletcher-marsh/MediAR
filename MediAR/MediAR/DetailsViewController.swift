@@ -9,15 +9,19 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
-    
-    @IBOutlet private var movietitle: UILabel!
-    @IBOutlet private var movieratings: UILabel!
-    @IBOutlet private var moviedesc: UILabel!
+    var mTitle = "Grinch"
+    var mDesc = "A spiteful green fellow attempts to ruin Christmas for a small town"
+    @IBOutlet var movietitle: UILabel!
+    @IBOutlet var moviedesc: UILabel!
 
     override func viewDidLoad() {
       super.viewDidLoad()
       self.navigationController?.navigationBar.isHidden = true;
+        
+        moviedesc.numberOfLines = 0
         // Do any additional setup after loading the view.
+        movietitle.text = mTitle
+        moviedesc.text = mDesc
     }
     
     

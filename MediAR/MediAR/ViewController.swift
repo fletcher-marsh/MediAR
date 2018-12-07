@@ -36,7 +36,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var previewVideoID = "vjnqABgxfO0"
     var toLat : Float?
     var toLong : Float?
+    var eventName : String?
+    var desc : String?
+    var ratings : [String]?
     
+
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var mapButton: UIButton!
     @IBOutlet weak var descButton: UIButton!
@@ -58,8 +62,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         configuration.detectionImages = []
         
+<<<<<<< HEAD
         // Grab Events Data
         events = Event.getAll()
+=======
+        //Grab Events Data
+        let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
+        
+        let data = NSData(contentsOf: apiURL as URL)!
+        
+        do {
+            let swiftyjson = try JSON(data: data as Data)
+            
+            if let eventdata = swiftyjson["data"].array {
+                
+                for object in eventdata {
+                    let eventName = object["media"].string!
+                    let eventPreview = object["preview"].string!
+                    let lat = object["lat"].float!
+                    let long = object["long"].float!
+                    let descrip = object["descrip"].string!
+                    let img = object["imgurkey"].string!
+                    
+                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview, ratings: nil)
+                    events.append(event)
+                }
+            }
+        } catch {
+        }
+>>>>>>> DetailView
         loadEventImages(events: events)
         
     }
@@ -147,6 +178,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.previewVideoID = self.liveEvents[name]!.preview
         self.toLat = self.liveEvents[name]!.lat
         self.toLong = self.liveEvents[name]!.long
+        self.desc = self.liveEvents[name]!.desc
+        self.eventName = self.liveEvents[name]!.title
+        self.ratings = self.liveEvents[name]!.ratings
     }
     
     func highlightSelected(_ n: SCNNode) {
@@ -219,6 +253,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let pvc = segue.destination as? PreviewViewController
             pvc?.videoID = self.previewVideoID
         }
+        else if segue.destination is DetailsViewController {
+            let dvc = segue.destination as? DetailsViewController
+            dvc?.mDesc = self.desc!
+            dvc?.mTitle = self.eventName!
+        } else if segue.destination is RatingsViewController {
+            let rvc = segue.destination as? RatingsViewController
+            let ratingSplit : [[String]] = self.ratings!.map { $0.components(separatedBy: "+") }
+            print(ratingSplit)
+            rvc?.ratingSources = ratingSplit.map { $0[0] }
+            rvc?.ratingValues = ratingSplit.map { $0[1] }
+        }
     }
     
     // MARK: - External Calls
@@ -249,7 +294,29 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    // Mark: - URL Loading
+    
+    func storeRatings(event: Event) {
+        do {
+            let plussedString = event.title.replacingOccurrences(of: " ", with: "+")
+//            print("https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")
+            let omdbURL: NSURL = NSURL(string: "https://omdbapi.com/?apikey=9c2d5c4d&t=\(plussedString)")!
+            
+            let data = NSData(contentsOf: omdbURL as URL)!
+            
+            let swiftyjson = try JSON(data: data as Data)
+            
+            var ratings = [String]();
+            
+            for(_, rating) in swiftyjson["Ratings"] {
+                ratings.append("\(rating["Source"])+\(rating["Value"])")
+            }
+            event.ratings = ratings
+        } catch { event.ratings = [String](); }
+    }
+    
     // Mark: - Image Loading
+
     
     func loadEventImages(events: [Event]) {
       //  let arImages = [ARReferenceImage]
@@ -280,6 +347,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 DispatchQueue.main.async {
+                    self.storeRatings(event: event)
                     loadEventImage(data: data!, name: event.title)
                 }
             })

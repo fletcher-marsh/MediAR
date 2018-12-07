@@ -16,14 +16,21 @@ class Event {
     let lat : Float
     let long : Float
     let preview : String
+    var ratings : [String]?
     
+<<<<<<< HEAD
     init(title: String, imagelink: String, desc: String, lat: Float, long: Float, preview: String) {
+=======
+    
+    init(title: String, imagelink: String, desc: String, lat: Float, long: Float, preview: String, ratings: [String]?) {
+>>>>>>> DetailView
         self.title = title
         self.imgurkey = imagelink
         self.desc = desc
         self.lat = lat
         self.long = long
         self.preview = preview
+        self.ratings = ratings
     }
     
     static func getFromBackend(data: NSData) -> [Event] {

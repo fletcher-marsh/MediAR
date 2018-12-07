@@ -62,35 +62,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         configuration.detectionImages = []
         
-<<<<<<< HEAD
         // Grab Events Data
         events = Event.getAll()
-=======
-        //Grab Events Data
-        let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
-        
-        let data = NSData(contentsOf: apiURL as URL)!
-        
-        do {
-            let swiftyjson = try JSON(data: data as Data)
-            
-            if let eventdata = swiftyjson["data"].array {
-                
-                for object in eventdata {
-                    let eventName = object["media"].string!
-                    let eventPreview = object["preview"].string!
-                    let lat = object["lat"].float!
-                    let long = object["long"].float!
-                    let descrip = object["descrip"].string!
-                    let img = object["imgurkey"].string!
-                    
-                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview, ratings: nil)
-                    events.append(event)
-                }
-            }
-        } catch {
-        }
->>>>>>> DetailView
         loadEventImages(events: events)
         
     }

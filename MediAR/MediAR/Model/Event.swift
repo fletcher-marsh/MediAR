@@ -18,12 +18,8 @@ class Event {
     let preview : String
     var ratings : [String]?
     
-<<<<<<< HEAD
-    init(title: String, imagelink: String, desc: String, lat: Float, long: Float, preview: String) {
-=======
     
     init(title: String, imagelink: String, desc: String, lat: Float, long: Float, preview: String, ratings: [String]?) {
->>>>>>> DetailView
         self.title = title
         self.imgurkey = imagelink
         self.desc = desc
@@ -48,7 +44,7 @@ class Event {
                     let descrip = object["descrip"].string!
                     let img = object["imgurkey"].string!
                     
-                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview)
+                    let event = Event(title: eventName, imagelink: img, desc: descrip, lat: lat, long: long, preview: eventPreview, ratings: [])
                     events.append(event)
                 }
             }

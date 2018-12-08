@@ -29,13 +29,12 @@ class Event {
         self.ratings = ratings
     }
     
+    // Take response from backend and populate an Event object
     static func getFromBackend(data: NSData) -> [Event] {
         var events : [Event] = []
         do {
             let swiftyjson = try JSON(data: data as Data)
-            
             if let eventdata = swiftyjson["data"].array {
-                
                 for object in eventdata {
                     let eventName = object["media"].string!
                     let eventPreview = object["preview"].string!
@@ -48,12 +47,15 @@ class Event {
                     events.append(event)
                 }
             }
-        } catch {}
+        } catch {
+            print("Data unable to be parsed: ")
+            print(data)
+        }
         return events
     }
 
     
-  
+    // Use the getAll endpoint to retrieve all events to recognize
     static func getAll() -> [Event] {
         let apiURL: NSURL = NSURL(string: "https://mediar-api.herokuapp.com/api/events")!
         let data = NSData(contentsOf: apiURL as URL)!

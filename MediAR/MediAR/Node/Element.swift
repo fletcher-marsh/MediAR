@@ -9,6 +9,7 @@
 import Foundation
 import ARKit
 
+// Base class for AR view elements to inherit
 class Element {
   var input : Any?
   var displayNode : SCNNode

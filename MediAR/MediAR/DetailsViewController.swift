@@ -9,26 +9,19 @@
 import UIKit
 
 class DetailsViewController: UIViewController {
+    // Default values to be overwritten by detected data
     var mTitle = "Grinch"
     var mDesc = "A spiteful green fellow attempts to ruin Christmas for a small town"
+    
+    // Interaction
     @IBOutlet var movietitle: UILabel!
     @IBOutlet var moviedesc: UILabel!
 
     override func viewDidLoad() {
-      super.viewDidLoad()
-      self.navigationController?.navigationBar.isHidden = true;
-        
+        super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true;
         moviedesc.numberOfLines = 0
-        // Do any additional setup after loading the view.
         movietitle.text = mTitle
         moviedesc.text = mDesc
     }
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }

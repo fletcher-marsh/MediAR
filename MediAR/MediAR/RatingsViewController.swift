@@ -9,12 +9,15 @@
 import UIKit
 
 class RatingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    @IBOutlet var tableView : UITableView?
-    
+    // Rating info
     var ratingSources : [String]?
     var ratingValues : [String]?
     
+    // Interaction
+    @IBOutlet var tableView : UITableView?
+    
+    // MARK: - Tables
+  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ratingSources!.count
     }
@@ -26,30 +29,11 @@ class RatingsViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
     }
     
+    // MARK: - Views
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView?.dataSource = self
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-
 }
